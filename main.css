@@ -59,65 +59,46 @@ font-size: 30px;
   color: #FFB028;
   background-color:#223A71; 
 }
+<<<<<<< HEAD
 .social{
  position: fixed;
  top: 90px;
  left: 0;
  z-index: 1000;
  margin-top:130px;
-}
-.dws-button{
- background-color: #3b5998;
- width: 100px;
- height: 25px;
- padding: 8px;
- transition: all 0.5s;
- margin-top: 2px;
-}
-a{
- color: #ffffff;
- text-decoration: none;
-}
-a i.fa{
- font-size: 25px;
- text-align: center;
- display: block;
-}
-.dws-share{
- float: left;
- width: 40px;
-}
-.dws-text{
- float: right;
- font-size: 20px;
- position: relative;
- top: 2px;
- right: 5px;
-}
-.dws-facebook {background-color: #3b5998;}
-.dws-vk {background-color: #507299;}
-.dws-twitter {background-color: #33bdf1;}
-.dws-youtube {background-color: #e62117;}
-.dws-odnoklassniki {background-color: #ee8208;}
-.dws-envelope-o {background-color: #656766;}
+=======
 
-.dws-button{
- width: 50px;
- height: 25px;
- padding: 4px;
- overflow: hidden;
+h4 {
+	border:solid #212024;
+	border-style: none;
+	border-radius: 4px;
+	text-align: center;
+	border-color: transparent;
+	font-size: 20px;
+	border: 8px solid transparent ;
+    
+		font-size: 20px;
+		background-color: #666666;
+	margin-left: 300px;
+	margin-right: 300px;
 }
-.dws-button:hover{
- background-color: #000;
- width: 50px;
- padding-left: 25px;
+.social a {
+    text-align: center;
+    width: 48px;
+    height: 48px;
+    float: left;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 0 50px rgba(0,0,0,0.1);
+    border-radius: 24px;
+    margin: 0 10px 10px 0;
+    padding: 6px;
+    color: #000;
+>>>>>>> b4c626cd09e6ff08c928c605311b2f8aed45a129
 }
-.dws-facebook:hover{width: 95px}
-.dws-vk:hover,.dws-youtube:hover{width: 95px}
-.dws-odnoklassniki:hover{width: 95px}
-.dws-envelope-o:hover{width: 95px}
 
-li {
-margin-left: 30px;
-
-}
+.youtube a:hover {background: #c4302b; color: #fff;}
+.instagram a:hover {background: #3f729b; color: #fff;}
+.facebook a:hover {background: #3b5998; color: #fff;}
+.vk a:hover {background: #5d84ae; color: #fff;}
+.telegram a:hover {background: #249bd7; color: #fff;}
