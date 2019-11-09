@@ -1,17 +1,17 @@
 body {
 	background-color: #262626 ;
 }
-#header{
-width: 100%;
-font-size: 30px;
- margin-top: 10px;
- margin-left: 8px;
-
-  background-color: #1c1c1c; 
-  border-bottom: 0px solid gray; 
+#footer{
+  position: fixed;
+  width: 100%;
+  font-size: 30px;
+  background-color: #1c1c1c;
   text-align: center;
+  top: 0;
+  left: 0;
 }
 #top_menu{
+  position: f;
   display: inline-block;
   list-style: none;
   padding-left: 0;
@@ -24,7 +24,8 @@ font-size: 30px;
 #top_menu > li > a{
   display: inline-block;
   padding: 10px 20px; 
-  color: inherit;
+  color: white;
+  font-family: sans-serif;
   text-decoration: none; 
 }
 #top_menu > li > a:hover{
