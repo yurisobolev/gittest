@@ -59,21 +59,6 @@ font-size: 30px;
   color: #FFB028;
   background-color:#223A71; 
 }
-
-h4 {
-	border:solid #212024;
-	border-style: none;
-	border-radius: 4px;
-	text-align: center;
-	border-color: transparent;
-	font-size: 20px;
-	border: 8px solid transparent ;
-    
-		font-size: 20px;
-		background-color: #666666;
-	margin-left: 300px;
-	margin-right: 300px;
-}
 .social{
  position: fixed;
  top: 90px;
