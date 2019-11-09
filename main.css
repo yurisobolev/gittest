@@ -26,7 +26,6 @@ font-size: 30px;
   padding: 10px 20px; 
   color: inherit;
   text-decoration: none; 
-  transition: background-color 0.25s, color 0.15s;
 }
 #top_menu > li > a:hover{
   color: #FFB028;
@@ -45,7 +44,6 @@ font-size: 30px;
   padding-left: 0;
   text-align: left;
   white-space: nowrap;
-  background-color: #5F82D3;
 }
 
 .inner_menu > li > a{
@@ -57,5 +55,4 @@ font-size: 30px;
 }
 .inner_menu > li > a:hover{
   color: #FFB028;
-  background-color:#223A71; 
 }
