@@ -2,11 +2,10 @@ body {
   background-color: #262626 ;
 }
 #footer{
-<<<<<<< HEAD
+
   position: relative;
 =======
   position: fixed;
->>>>>>> 23ee6568edaa14af97064d23da3f3d2201d93bc8
   width: 100%;
   font-size: 30px;
   background-color: #1c1c1c;
@@ -79,7 +78,7 @@ margin-top: 90px;
 .btn8 span:before {
   position: absolute;
   width: 100%;
-  color: rgb(8, 120, 213);
+  color:#A9A9A9 ;
   left: 0;
   top: 100%;
   content: attr(data-hover);
