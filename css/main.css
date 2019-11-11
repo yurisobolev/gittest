@@ -41,9 +41,10 @@ button{
   display: none;
 }
 .gid {
+  margin-top: 45px;
   padding: 35px;
   margin-left: 800px;
-  border:solid #808080;
+  border:solid #262626;
   border-width:medium;
   border-radius: 5;
   position: relative;
