@@ -4,7 +4,6 @@ body {
 #footer{
 
   position: relative;
-=======
   position: fixed;
   width: 100%;
   font-size: 30px;
@@ -40,9 +39,8 @@ body {
   display: block;
 }
 
-
 #page {
-  margin-top: 30px;
+  margin-top: 60px;
 font-size: 140px;
   position: relative;
   width: 100%;
@@ -102,11 +100,8 @@ font-size: 140px;
 }
 .btn5 {
   color: #A9A9A9
-
 }
- 
 .btn5:hover {
-   
   color:white;
   box-shadow: inset 0 0 0 30px #A9A9A9 ;
   -webkit-transition: all 0.5s ease;
@@ -116,7 +111,6 @@ font-size: 140px;
   transition: all 0.5s ease;
 }
 #page2 {
- 
 font-size: 140px;
   position: relative;
   width: 100%;
