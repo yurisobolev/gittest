@@ -2,10 +2,7 @@ body {
   background-color: #262626 ;
 }
 #footer{
-
   position: relative;
-=======
-  position: fixed;
   width: 100%;
   font-size: 30px;
   background-color: #1c1c1c;
