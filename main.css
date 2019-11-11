@@ -42,6 +42,7 @@ body {
 
 
 #page {
+  margin-top: 30px;
 font-size: 140px;
   position: relative;
   width: 100%;
@@ -87,4 +88,77 @@ font-size: 140px;
   -webkit-transform: translateY(-100%);
   -moz-transform: translateY(-100%);
   transform: translateY(-100%);
+}
+#page1 {
+font-size: 140px;
+  position: relative;
+  width: 100%;
+  font-size: 30px;
+  background-color:#A9A9A9 ;
+  text-align: center;
+  top: 0;
+  left: 0;
+  color: #A9A9A9
+}
+.btn5 {
+  color: #A9A9A9
+
+}
+ 
+.btn5:hover {
+   
+  color:white;
+  box-shadow: inset 0 0 0 30px #A9A9A9 ;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#page2 {
+ 
+font-size: 140px;
+  position: relative;
+  width: 100%;
+  font-size: 30px;
+  background-color:#A9A9A9 ;
+  text-align: center;
+  top: 0;
+  left: 0;
+}
+.btn10 {
+  padding: 0 30px;
+  height: 1.2em;
+  overflow: hidden;
+  font-size: 60px;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-family: arial;
+} 
+.btn10 span {
+  position: relative;
+  padding: 0 5px;
+  display: inline-block;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+} 
+.btn10 span:before {
+  position: absolute;
+  width: 100%;
+  color:#A9A9A9 ;
+  left: 0;
+  top: 100%;
+  content: attr(data-hover);
+  font-weight: 700;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+} 
+.btn10:hover span {
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  transform: translateY(100%);
 }
