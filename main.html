@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <title>moi sait</title>
@@ -21,14 +22,21 @@
             <li><a href="reg.php">Регистрация</a></li>
         </ul>
     </div>
-    <div id="page">
-    <a class="btn8" href="https://vk.com/uadebil228"><span  data-hover="Моя ссылка">EASYGID</span></a>
-    </div>
-    <div id="page1" >
-    <a class="btn5" href="https://vk.com/uadebil228"><span  data-hover="Моя ссылка">Начать</span></a>
-    </div>
-    <div id="page2">
-    <a class="btn10" href="https://vk.com/uadebil228"><span  data-hover="Моя ссылка">хотите попробовать?</span></a>
+
+    <div class="gid">
+    	<p>EASYGID</p>
+			<button>123</button>
+		<p>экскурсии, легко</p>
     </div>
 
 </html>
+
+<script type="text/javascript">
+	$( ".gid" ).hover(
+  function() {
+    $('button').show('slow')
+  }, function() {
+    $('button').hide('slow')
+  }
+);
+</script>
