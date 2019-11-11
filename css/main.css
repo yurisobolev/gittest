@@ -4,7 +4,6 @@ body {
 #footer{
 
   position: relative;
-  position: fixed;
   width: 100%;
   font-size: 30px;
   background-color: #1c1c1c;
@@ -38,10 +37,10 @@ body {
  color: #FFB028;
   display: block;
 }
-
-.gid {
-  color: red
-  font-size: 95px;
-background-color: white;
-
+button{
+  display: none;
+}
+.gid{
+  position: relative;
+  display: inline-block;
 }
