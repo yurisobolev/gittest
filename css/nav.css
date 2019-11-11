@@ -2,7 +2,7 @@ body {
   background-color: #262626 ;
 }
 #footer{
-  position: fixed;
+  position: relative;
   width: 100%;
   font-size: 30px;
   background-color: #1c1c1c;
@@ -11,7 +11,7 @@ body {
   left: 0;
 }
 #top_menu{
-  position: f;
+  position: relative;
   display: inline-block;
   list-style: none;
   padding-left: 0;
