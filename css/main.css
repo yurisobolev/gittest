@@ -2,9 +2,9 @@ body {
 background: linear-gradient(-45deg, #6a6a6a,
 #545454,#3f3f3f,#2c2c2c,#191919,#000000);
 background-size: 400% 400%;
--webkit-animation: Gradient 24s ease infinite;
--moz-animation: Gradient 24s ease infinite;
-animation: Gradient 24s ease infinite;
+-webkit-animation: Gradient 18s ease infinite;
+-moz-animation: Gradient 18s ease infinite;
+animation: Gradient 18s ease infinite;
 }
 @-webkit-keyframes Gradient {
 0% {
@@ -84,7 +84,7 @@ button{
   margin-top: 45px;
   padding: 35px;
   margin-left: 800px;
-  border:solid #262626;
+  border:solid transparent;
   border-width:medium;
   border-radius: 5;
   position: relative;
@@ -106,4 +106,24 @@ font-family:
   margin-left: 50px;
 font-size: 35px;
 }
+.p1 {
+  text-align:center;
+  font-size: 36px;
+margin-left: 800px;
+color: white;
+font-family: Comic Sans MS, Comic Sans, cursive;
+position: relative;
+  width: 300px;
+}
+h1 {
+  
+text-align:left;
+  font-size: 20px;
+margin-left: 700px;
+color: white;
+font-family: Comic Sans MS, Comic Sans, cursive;
+position: relative;
+  width: 500px;
 
+
+}
