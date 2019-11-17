@@ -5,7 +5,14 @@
 <head>
     <meta charset="utf-8">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="js/index.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/socialbtns.css">
+    
 
     <title>moi sait</title>
 
@@ -15,33 +22,65 @@
     <div id="footer">
         <ul id=top_menu>
             <li><a href="#">Главная</a></li>
-            <li><a href="catalog.html">Каталог</a>
-            </li>
+            <li><a href="catalog.html">Каталог</a></li>
             <li><a href="help.html">Сделать экскурсию</a></li>
-            <li><a href="contact.html">Контакты</a></li>
             <li><a href="reg.php">Регистрация</a></li>
         </ul>
     </div>
-
-   <div class="p1">
-<p>Проект GIDIT создан для простого поиска интересных экскурсий, а также для создания экскурсий самому.</p>
-</div>
-    <div class="gid">
-    	<p id=EASYGID  >EASYGID</p>
-			<button id=start >начать</button>
-		<p id=bb>экскурсии, легко</p>
+    
+    <ul class='social'>
+      <li>
+            <a class="fa fa-facebook" href="#">    
+              <span>Facebook</span>
+            </a> 
+      </li>
+      
+      <li>
+            <a class="fa fa-youtube" href="#">
+              <span>Youtube</span>
+            </a>
+      </li>
+      
+      <li>
+            <a class="fa fa-vk" href="#">
+              <span>VK</span>
+            </a>
+      </li>
+      <li>
+            <a class="fa fa-instagram" href="#">    
+              <span>Instagram</span>
+            </a> 
+      </li>
+      <li>
+            <a class="fa fa-facebook" href="#">    
+              <span>Facebook</span>
+            </a> 
+  </li>
+  
 
   
-</body>
+ </ul>
 
+    <div class="p1">
+        <p>Проект GIDIT создан для простого поиска интересных экскурсий, а также для создания экскурсий самому.</p>
+    </div>
+
+    <div class="gid">
+        <p id=EASYGID>EASYGID</p>
+        <button id=start>начать</button>
+        <p id=bb>экскурсии, легко</p>
+    </div>
+
+</body>
 
 </html>
 <script type="text/javascript">
-    $( ".gid" ).hover(
-  function() {
-    $('button').show('slow')
-  }, function() {
-    $('button').hide('slow')
-  }
-);
+    $(".gid").hover(
+        function() {
+            $('button').show('slow')
+        },
+        function() {
+            $('button').hide('slow')
+        }
+    );
 </script>
