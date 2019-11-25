@@ -1,0 +1,120 @@
+.generator{
+	position: relative;
+	margin: 10%;
+	display: inline;
+}
+
+#add-block{
+	position: relative;
+	margin: 30px;
+	width: 300px;
+	height: 289px;
+	border: 3px solid black;
+	background: #d3d3d3;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+  	justify-content: center
+}
+
+#add-block > img {
+	position: relative;
+	width: 100px;
+	height: 100px;
+}
+
+.gid-block{
+	float: left;
+	position: relative;
+	margin: 30px;
+	width: 300px;
+	height: 289px;
+	border: 3px solid black;
+	background: #d3d3d3;
+}
+
+.load-btn{
+	position: relative;
+	border: 1px solid black;
+	height: 30px;
+	font-size: 1.15em;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	transition: 0.3s;
+}
+
+.load-btn:hover{
+	background: black;
+	color: orange;
+}
+
+.file-wrapper{
+	position: relative;
+	display: inline-block;
+}
+
+
+.preview-image{
+	position: relative;
+	width: 100px;
+	height: 100px;
+	margin-top: 10px;
+}
+
+textarea {
+  margin-top: 20px;
+  resize: none;
+  width: 100%;
+  height: 100px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+
+textarea:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
+.wrapper-form{
+	overflow: hidden;
+	padding: 10px;
+}
+
+
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.input-file + label {
+	padding: 5px;
+	border: 1px solid black;
+    font-size: 1.15em;
+    color: #090909;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    display: inline-block;
+    transition: 0.3s;
+}
+.input-file:focus + label,
+.input-file + label:hover {
+	background: black;
+    color: orange;
+}
