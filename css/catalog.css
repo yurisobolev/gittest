@@ -1074,8 +1074,9 @@ background-color: #D3D3D3;
 
 .navigation .drop-down>ul>li>a:hover {
 	text-decoration: none;
-	background-color:black;	
-	margin-left: -12px;
+	background-color:black;
+	color: orange;	
+	margin-left: -12px
 }
 
 .navigation .drop-down>ul>li>ul {
