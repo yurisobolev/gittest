@@ -1,4 +1,4 @@
-<!DOCTYPE>
+﻿<!DOCTYPE>
 <!DOCTYPE html>
 <html>
 
@@ -24,8 +24,8 @@
             <li><a href="#">Главная</a></li>
             <li><a href="catalog.html">Каталог</a></li>
             <li><a href="reg.php">Регистрация</a></li>
-            <li><a href="generator/">Сделать экскурсию</a></li>
-            
+            <li><a href="generator/index.html">Сделать экскурсию</a></li>
+
         </ul>
     </div>
     
@@ -37,13 +37,13 @@
       </li>
       
       <li>
-            <a class="fa fa-youtube" href="#">
+            <a class="fa fa-youtube" href="https://youtube.com/">
               <span>Youtube</span>
             </a>
       </li>
       
       <li>
-            <a class="fa fa-vk" href="#">
+            <a class="fa fa-vk" href="https://vk.com/">
               <span>VK</span>
             </a>
       </li>
@@ -52,30 +52,27 @@
               <span>Instagram</span>
             </a> 
       </li>
-      <li>
-            <a class="fa fa-facebook" href="#">    
-              <span>Facebook</span>
-            </a> 
-  </li>
+      
   
 
   
  </ul>
 
-    <div class="p1">
-        <p>Проект GIDIT создан для простого поиска интересных экскурсий, а также для создания экскурсий самому.</p>
-    </div>
-
     <div class="gid">
-        <p id=EASYGID>EASYGID</p>
+
+        <div class="start_text">
+            <p>Проект GIDIT создан для простого поиска интересных экскурсий, а также для создания экскурсий самому.</p>
+        </div>
+
+        <p class="start_text">EASYGID</p>
         <button id=start>начать</button>
-        <p id=bb>экскурсии, легко</p>
+        <p class="start_text">экскурсии, легко</p>
     </div>
 
 </body>
 
 </html>
-<script type="text/javascript">
+<script type="text/javascript" href="generator/index.html">
     $(".gid").hover(
         function() {
             $('button').show('slow')
@@ -84,4 +81,9 @@
             $('button').hide('slow')
         }
     );
+    $(document).ready(()=>{
+          $('#start').click(()=>{
+            document.location.href = "C:/Users/%D0%9F%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C/gittest/generator/index.html"
+          })
+        })
 </script>
