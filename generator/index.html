@@ -18,6 +18,8 @@
 </head>
 
 <body>
+    <div id="overlay"></div>
+
     <div id="footer">
         <ul id=top_menu>
             <li><a href="../index.html">Главная</a></li>
@@ -31,51 +33,49 @@
 
     <div class="generator">
 
-            <div id="add-block">
-                <img src="icons/plus.png">
+            <div id="add-block" title="Добавить слайд">
+               +
             </div>
-    </div>
 
+            <div class="slideList"></div>
+    </div>
 
 </body>
 
 </html>
 
+<script type="text/javascript">
+    function overlayOn() {
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function overlayOff() {
+      document.getElementById("overlay").style.display = "none";
+    }
+</script>
+
         <!-- Шаблон блока для клонирования  -->
         <div class="gid-block templateGid" data-number="1" style="display: none">
                 
-                    <div class="wrapper-form">
-                        
-                    
-                    <div class="image-form">
-                        <form action="generator/file-handler.php" method="post" enctype="multipart/form-data">
-                            <div class="file-wrapper">
-                                <input type="file" name="upload" class="input-file">
-                                <label for="">Выберите файл</label>
-                            </div>
-                        </form>
-
-                        <ul class="uploadImagesList">
-                            <li class="item template">
-                                <span class="img-wrap">
-                                <img src="" alt="" class="preview-image">
-                            </span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <textarea 
-                        placeholder=" Описание изображения " 
-                        rows="20" name="comment[text]" 
-                        id="comment_text" 
-                        cols="40" 
-                        class="ui-autocomplete-input" 
-                        autocomplete="off" 
-                        role="textbox" 
-                        aria-autocomplete="list" 
-                        aria-haspopup="true"
-                    >
-                    </textarea>
-        </div>
+                <p class="slide_number" style="display: inline-block;">Слайд</p>
+                <input class="pick_slide" data-slide="" name="edit" type="button" value="Редактировать" name="" style="display: inline-block;">
 
         </div>
+
+
+        <!--                         <div class="image-form">
+                            <form action="generator/file-handler.php" method="post" enctype="multipart/form-data">
+                                <div class="file-wrapper">
+                                    <input type="file" name="upload" class="input-file">
+                                    <label for="">Выберите файл</label>
+                                </div>
+                            </form>
+
+                            <ul class="uploadImagesList">
+                                <li class="item template">
+                                    <span class="img-wrap">
+                                    <img src="" alt="" class="preview-image">
+                                </span>
+                                </li>
+                            </ul>
+                        </div> -->
