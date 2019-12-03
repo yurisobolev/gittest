@@ -50,19 +50,22 @@ background: #1c1c1c
  color: #FFB028;
   display: block;
 }
-/*.wrap-discription{
-  position: relative;
+.wrap-discription{ 
+  position: fixed; 
   border: 1.5px solid #848482;
   height: 100%;
-  margin-left: 15%;
+  width: 85%;
+  margin-left: 20%;
   background-repeat: no-repeat;
-  background-image: url(https://tatil.uz/fm/userfiles/%D0%A1%D0%90%D0%9C%D0%AB%D0%95_%D0%9F%D0%9E%D0%A1%D0%95%D0%A9%D0%90%D0%95%D0%9C%D0%AB%D0%95_%D0%A1%D0%A2%D0%A0%D0%90%D0%9D%D0%AB_%D0%92_2016/1.jpg?time=1501843975056); ; 
-}*/
+  background-image: url(http://v.img.com.ua/b/orig/5/96/3a4d88b51b8df5593b7335d25657a965.jpg); ; 
+  background-size: cover;
+}
 .gid {
   position: relative;
   margin-top: 45px;
   padding: 35px;
-  left: 50%;
+  left: 30%;
+  margin-top: 40%;
   margin-left: -150px;
   position: relative;
   font-size: 30px;
@@ -88,7 +91,7 @@ background: #1c1c1c
   margin-left: 30%;
   text-align:center;
   font-size: 36px;
-  color: white;
+  color: black;
   font-family: Comic Sans MS, Comic Sans, cursive;
   position: relative;
   width: 600px;
@@ -107,3 +110,4 @@ background: #1c1c1c
   color: #fff;
   font-size: 18px;
   font-family: 'Arial' sans-serif; 
+}
