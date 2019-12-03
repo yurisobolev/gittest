@@ -1,16 +1,21 @@
 .social {
-  position: fixed;
-  width: 200px;
+  position: relative;
+  width: 270px;
   height: 220px;
-  margin-top: 30px;
-  perspective: 1000px;
+  display: inline;
+}
+
+
+.social li{
+  display: inline-block;
+  margin:5px;
 }
 
 .social li a {
   display: block;
   height: 20px;
   width: 40px;
-  background: #222;
+  background: transparent;
   border-bottom: 1px solid #333;
   font: normal normal normal 16px/20px  'FontAwesome', 'Source Sans Pro', Helvetica, Arial, sans-serif;
   color: #fff;
