@@ -14,12 +14,33 @@
       <title>moi sait</title>
    </head>
    <body>
+    <?php 
+        require 'registration/db.php';
+        R::setup(  'mysql:host=127.0.0.1;dbname=akowidget','root', '');
+        if ( !R::testConnection() )
+        {
+          exit('Нет подключения к базе данных');
+        }
+        ?>
+
+
+        <?php if ( isset ($_SESSION['logged_user']) ) : ?>
+          
+        <?php echo "<p style='color:green'>Привет </p>" . $_SESSION['logged_user']->login; ?>!<br/>
+
+          <a href="registration/logout.php">Выйти</a>
+
+    <?php else : ?>
+        <a href="registration/login.php">Авторизация</a>
+        <a href="registration/signup.php">Регистрация</a>
+    <?php endif; ?>
+
+
       <div id="footer">
          <div id="navigate">
             <ul id=top_menu>
                <li><a href="#">Главная</a></li>
                <li><a href="catalog.html">Каталог</a></li>
-               <li><a href="reg.php">Регистрация</a></li>
                <li><a href="generator/index.html">Создать</a></li>
             </ul>
             <ul class='social'>
