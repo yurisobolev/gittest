@@ -16,12 +16,7 @@
    <body>
     <?php 
         require 'registration/db.php';
-        R::setup(  'mysql:host=127.0.0.1;dbname=akowidget','root', '');
-        if ( !R::testConnection() )
-        {
-          exit('Нет подключения к базе данных');
-        }
-        ?>
+    ?>
 
 
         <?php if ( isset ($_SESSION['logged_user']) ) : ?>
@@ -67,7 +62,7 @@
             </ul>
          </div>
       </div>
-      <table border="1px" width="5px" height="100%"></table>
+   
       <div class="wrap-discription">
       <div class="gid">
          <p class="start_text">EASYGID</p>
