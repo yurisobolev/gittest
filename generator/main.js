@@ -24,6 +24,58 @@ var blockTemplate;
 
 
 const editor = {
+
+    editBlock:(el, type) =>{
+        $('.editWindow').empty()
+        switch (type){
+            case 'slider':
+                editor.editSlider(el)
+            case 'textArea':
+                editor.editTextArea(el)
+            case 'audio':
+                editor.editAudio(el)
+        }
+    },
+    editTextArea:(el) =>{
+
+    },
+    editAudio:() =>{
+
+    },
+    editSlider:(el) =>{
+
+        div = $('<div></div>')
+
+        imagesLabel = $('<p> Изображения </p>')
+
+        images = $('<div></div>')
+
+        addImageBtn = $('<div></div>') 
+
+        saveBtn = $('<input class="editBtn" type="button" value="Применить" />')
+
+        images.css({
+            'position' : 'relative',
+            'border'   : 'solid 1px #f57507',
+            'width' : '300px',
+            'height' : '100px',
+            'margin': '10px',
+            'border-radius': '8px'
+        })
+
+        imagesLabel.css({
+            'position' : 'relative',
+            'color' : 'white',
+            'font-family' : 'sans-serif',
+            'font-size'  : '25px',
+            'margin' : '10px',
+        })
+
+        div.append(imagesLabel, images, saveBtn)
+
+        $('.editWindow').append(div)
+    },
+
     createBlock: (parent) =>{
         block = $('<div id="block_' + (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)) + '"></div>')
 
@@ -42,21 +94,52 @@ const editor = {
 
         return block;
     },
-    createImage: (parent) =>{
-        id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
-        image = $('<img src="icons/picture.png" id="image_' + id + '">')
 
-        image.css({
+    createSlider: (parent) =>{
+        id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
+
+        slider = $('<div id="imgSlider_'+id+'"></div>')
+
+        arrowRight = $('<i class="right"></i>') 
+        arrowLeft  = $('<i class="left"></i>')
+
+        slider.append(arrowRight)
+        slider.append(arrowLeft)
+
+        slider.css({
             'position' : 'absolute',
             'display' : 'block',
-            'width' : '128px',
-            'height': '128px',
+            'border':'solid 1px #f57507',
+            'border-radius' : '10px',
+            'width' : '450px',
+            'height': '256px',
             'margin': '20px',
-            'touch-action' : 'none'
+            'touch-action' : 'none',
+            'transition' : '0.3s'
         })
 
-        parent.append(image)
+        slider.dblclick(function() {
+            editor.editBlock(this, 'slider')
+        });
+
+        slider.hover(function(){
+            $(this).css({
+                'border' : 'solid 3px wheat',
+                'cursor' : 'pointer',
+                'opacity' : '0.3'
+            });
+            }, function(){
+            $(this).css({
+                'border' : 'solid 1px #f57507',
+                'cursor' : 'default',
+                'opacity' : '1'
+
+            });
+        })
+
+        parent.append(slider)
     },
+
     createText: (parent) =>{
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
         textArea = $('<textarea placeholder="Расскажите о экскурсии" id="textArea_' + id + '"></textarea>')
@@ -82,9 +165,6 @@ const editor = {
 
         console.log("textArea_" + id)
         parent.append(textArea) 
-    },
-    editText: (id) =>{
-
     }
 }
 
@@ -130,9 +210,11 @@ const generator = {
 
             div = $('<div>')
 
+            editWindow = $('<div class="editWindow"></div>')
+
             addText = $('<input  class="editBtn"  type="button" value="Текст">')
 
-            addImage = $('<input class="editBtn"  type="button" value="Изображение">')
+            addImage = $('<input class="editBtn"  type="button" value="Изображения">')
 
             addAudio = $('<input class="editBtn"  type="button" value="Аудио">')
 
@@ -153,7 +235,7 @@ const generator = {
             })
 
             addImage.click(function(event) {
-                editor.createImage(div)
+                editor.createSlider(div)
             })
 
             addText.click(function(event) {
@@ -166,67 +248,37 @@ const generator = {
                 }
             })
 
+             editWindow.css({
+                 'position' : 'relative',
+                 'display' : 'inline-block',
+                 'border': '2px solid #f57507',
+                 'border-radius': '10px',
+                 'width': '400px',
+                 'background' : 'transparent',
+                 'margin-left' : '50px',
+                 'margin-top' : '50px',
+                 'height' : '80%',
+                 'float'  : 'left',
+                 'overflow': 'hidden'
+             })
+
              div.css({
                  'position' : 'relative',
+                 'display' : 'inline-block',
                  'border': '2px solid #f57507',
                  'border-radius': '10px',
                  'width': '70%',
                  'background' : 'transparent',
-                 'margin-left' : '14%',
+                 'margin-left' : '50px',
                  'margin-top' : '50px',
                  'height' : '80%',
                  'overflow': 'hidden'
              });
 
-             // editBtn.css({
-             //     'margin': '10px',
-             //     'border-radius': '10px'
-             // });
              div.append(addText, addImage, addAudio, exitBtn)
 
-             $("#overlay").append(div)
+             $("#overlay").append(div, editWindow)
     }
 
     }
 
-
-
-function makeDraggble(el) {
-    interact(el)
-  .draggable({
-    // enable inertial throwing
-    inertia: true,
-    // keep the element within the area of it's parent
-    modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: 'parent',
-        endOnly: true
-      })
-    ],
-    // enable autoScroll
-    autoScroll: true,
-
-    // call this function on every dragmove event
-    onmove: dragMoveListener,
-    // call this function on every dragend event
-    onend: function (event) {
-      console.log('123')
-    }
-  })
-
-function dragMoveListener (event) {
-  var target = event.target
-  // keep the dragged position in the data-x/data-y attributes
-  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
-
-  // translate the element
-  target.style.webkitTransform =
-    target.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)'
-
-  // update the posiion attributes
-  target.setAttribute('data-x', x)
-  target.setAttribute('data-y', y)
-}
-}

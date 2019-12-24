@@ -17,21 +17,6 @@
 </head>
 
 <body>
-<?php 
-        require 'registration/db.php';
-    ?>
-
-        <?php if ( isset ($_SESSION['logged_user']) ) : ?>
-
-            <?php echo "<p style='color:green'>Привет </p>" . $_SESSION['logged_user']->login; ?>!
-                <br/>
-
-                <a href="registration/logout.php">Выйти</a>
-
-                <?php else : ?>
-                    <a href="registration/login.php">Авторизация</a>
-                    <a href="registration/signup.php">Регистрация</a>
-                    <?php endif; ?>
 
 	
 <div class="menu">

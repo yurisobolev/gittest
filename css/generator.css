@@ -3,6 +3,41 @@
 	display: inline;
 }
 
+
+i {
+  border: solid #f57507;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  width: 30px;
+  height: 30px;
+  top: 100px;
+  transition: 0.3s;
+}
+
+i:hover{
+	border-color: white;
+	width: 25px;
+	height: 25px;
+	cursor: pointer; 
+}
+
+.right {
+	position: absolute;
+	right: 0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  margin-right: 30px;
+}
+
+.left {
+	position: absolute;
+	left: 0;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  margin-left: 30px;
+}
+
 #add-block{
 	position: relative;
 	margin-bottom: 20px;
