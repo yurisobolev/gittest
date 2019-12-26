@@ -3,7 +3,7 @@ jQuery(document).ready(($) => {
     var queue = {};
 
     $("#add-block").click(function(event) {
-        generator.create();
+        generator.create ();
     });
 
     blockTemplate = $(document).find('.templateGid').clone()
@@ -24,6 +24,7 @@ var blockTemplate;
 
 
 const editor = {
+    slideOnEdit: 0,
 
     editBlock:(el, type) =>{
         $('.editWindow').empty()
@@ -74,25 +75,6 @@ const editor = {
         div.append(imagesLabel, images, saveBtn)
 
         $('.editWindow').append(div)
-    },
-
-    createBlock: (parent) =>{
-        block = $('<div id="block_' + (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)) + '"></div>')
-
-        block.css({
-            'position' : 'relative',
-            'display'  : 'block',
-            'border-radius' : '10px',
-            'background'    : 'transparent',
-            'border' : '1px solid #f57507',
-            'margin' : '20px',
-            'width'  : '100px',
-            'height' : '50px'
-        })
-
-        parent.append(block)
-
-        return block;
     },
 
     createSlider: (parent) =>{
@@ -168,6 +150,16 @@ const editor = {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
 const generator = {
 
     count: 0,
@@ -175,6 +167,7 @@ const generator = {
     textAreasCount : 0,
 
     create: () => {
+
         slide = {
             id : generator.count,
             textEl : [],
@@ -191,19 +184,29 @@ const generator = {
         generator.slides.push(slide)
         
         $(".pick_slide").click(function(event) {
-            generator.edit($(this).attr('data-slide'));
+            generator.createEditWindow(parseInt($(this).attr('data-slide')));
         });
 
-        $(".input-file").on('change', function() {
-            var files = this.files;
+        // $(".input-file").on('change', function() {
+        //     var files = this.files;
 
-            for (var i = 0; i < files.length; i++) {
-                preview(files[i], $(this));
-            }
-        });
+        //     for (var i = 0; i < files.length; i++) {
+        //         preview(files[i], $(this));
+        //     }
+        // });
     },
 
-    edit: (id) => {
+   createEditWindow: (slide_id) => {
+
+            for (var i = 0; i < generator.slides.length; i++) {
+                if (generator.slides[i].id == slide_id) {
+                    editor.slideOnEdit = generator.slides[i]
+                    break;
+                }
+                else{
+                    console.log('Такого слайда не найдено!')
+                }
+            }
 
             overlayOn();
             $('#overlay').empty()

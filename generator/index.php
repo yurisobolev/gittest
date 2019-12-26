@@ -63,7 +63,7 @@
 
 
         <!--                         <div class="image-form">
-                            <form action="generator/file-handler.php" method="post" enctype="multipart/form-data">
+                            <form action="file-handler.php" method="post" enctype="multipart/form-data">
                                 <div class="file-wrapper">
                                     <input type="file" name="upload" class="input-file">
                                     <label for="">Выберите файл</label>

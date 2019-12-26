@@ -35,8 +35,8 @@
          <div id="navigate">
             <ul id=top_menu>
                <li><a href="#">Главная</a></li>
-               <li><a href="catalog.html">Каталог</a></li>
-               <li><a href="generator/index.html">Создать</a></li>
+               <li><a href="filter/">Каталог</a></li>
+               <li><a href="generator/index.php">Создать</a></li>
             </ul>
             <ul class='social'>
                <li>
