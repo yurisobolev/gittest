@@ -2,7 +2,7 @@
 
 <?php 
 require 'db.php';
-R::setup(  'mysql:host=127.0.0.1;dbname=redbean','root', '');
+R::setup(  'mysql:host=127.0.0.1;dbname=akowidget','root', '');
 if ( !R::testConnection() )
 {
 	exit('Нет подключения к базе данных');

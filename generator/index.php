@@ -3,15 +3,21 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <meta charset="utf-8">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../generator/main.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/generator.css">
     <link rel="stylesheet" type="text/css" href="../css/socialbtns.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
     <title>Генератор v1.0</title>
 
@@ -20,17 +26,6 @@
 <body>
     <div id="overlay"></div>
 
-    <div id="footer">
-        <ul id=top_menu>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="catalog.html">Каталог</a></li>
-
-            <li><a href="#">Сделать экскурсию</a></li>
-
-            <li><a href="reg.php">Регистрация</a></li>
-        </ul>
-    </div>
-
     <div class="generator">
 
             <div id="add-block" title="Добавить слайд">
@@ -38,7 +33,11 @@
             </div>
 
             <div class="slideList"></div>
+            <div class="editPlace"></div>
     </div>
+
+
+    
 
 </body>
 
@@ -64,7 +63,7 @@
 
 
         <!--                         <div class="image-form">
-                            <form action="generator/file-handler.php" method="post" enctype="multipart/form-data">
+                            <form action="file-handler.php" method="post" enctype="multipart/form-data">
                                 <div class="file-wrapper">
                                     <input type="file" name="upload" class="input-file">
                                     <label for="">Выберите файл</label>

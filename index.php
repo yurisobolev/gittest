@@ -35,8 +35,18 @@
          <div id="navigate">
             <ul id=top_menu>
                <li><a href="#">Главная</a></li>
+<<<<<<< HEAD
                <li><a href="catalog.html">Каталог</a></li>
                <li><a href="generator/index.html">Создать</a></li>
+=======
+<<<<<<<< HEAD:index.php
+               <li><a href="filter/">Каталог</a></li>
+               <li><a href="generator/index.php">Создать</a></li>
+========
+               <li><a href="catalog.html">Каталог</a></li>
+               <li><a href="generator/index.html">Создать</a></li>
+>>>>>>>> 0ebac0b532cec60553bb360e1664c16529ba38ac:index.html
+>>>>>>> 0ebac0b532cec60553bb360e1664c16529ba38ac
             </ul>
             <ul class='social'>
                <li>
@@ -62,16 +72,24 @@
             </ul>
          </div>
       </div>
+<<<<<<< HEAD
       <div class="scaleable-wrapper" id="scaleable-wrapper">
       <div class="wrap-discription" id="wrap-discription">
+=======
+   
+      <div class="wrap-discription">
+>>>>>>> 0ebac0b532cec60553bb360e1664c16529ba38ac
       <div class="gid">
          <p class="start_text">EASYGID</p>
          <button id=start>начать</button>
          <p class="start_text">экскурсии, легко</p>
       </div> 
     </div>
+<<<<<<< HEAD
   </div>
 
+=======
+>>>>>>> 0ebac0b532cec60553bb360e1664c16529ba38ac
    </body>
 </html>
 <script type="text/javascript" href="generator/index.html">
