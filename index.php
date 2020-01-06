@@ -62,14 +62,16 @@
             </ul>
          </div>
       </div>
-   
-      <div class="wrap-discription">
+      <div class="scaleable-wrapper" id="scaleable-wrapper">
+      <div class="wrap-discription" id="wrap-discription">
       <div class="gid">
          <p class="start_text">EASYGID</p>
          <button id=start>начать</button>
          <p class="start_text">экскурсии, легко</p>
       </div> 
     </div>
+  </div>
+
    </body>
 </html>
 <script type="text/javascript" href="generator/index.html">

@@ -3,6 +3,7 @@ background: #1c1c1c
 }
 
 #footer{
+  position: relative;
     position: fixed;
     background: black;
     width: 20%;
@@ -10,14 +11,18 @@ background: #1c1c1c
 }
 
 #navigate{
-    position: relative;
+  float: left;
+    position: absolute;
     margin-top: 5%;
-    margin-left: 10%;
+    margin-left: 2%;
     margin-right: 5%;
     background-color: transparent;
     border: 1.5px solid #f57507;
     border-radius: 6px;
     width: 300px;
+    max-width: 300px;
+    min-width: 200px;
+z-index: 1;
 
 }
 
@@ -51,14 +56,24 @@ background: #1c1c1c
   display: block;
 }
 .wrap-discription{ 
-  position: fixed; 
-  border: 1.5px solid #848482;
-  height: 100%;
-  width: 85%;
-  margin-left: 20%;
-  background-repeat: no-repeat;
-  background-image: url(http://v.img.com.ua/b/orig/5/96/3a4d88b51b8df5593b7335d25657a965.jpg); ; 
-  background-size: cover;
+ border: 1.5px solid #848482;
+  width: 74%;
+  height: 30%;
+  padding: 50px;
+  text-align: center;
+  background: white;
+  position: relative;
+  margin-left: 60%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.scaleable-wrapper {
+  padding: 20px;
+  resize: both;
+  position: relative;
+  background: #666;
+  height: 400px;
 }
 .gid {
   position: relative;
