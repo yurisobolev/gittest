@@ -37,23 +37,61 @@ const editor = {
 
         div = $('<div></div>')
 
-        imagesLabel = $('<p> Изображения </p>')
+        loadBtn = $('<input  type="button" value="Загрузить"/>')
 
-        addImageBtn = $('<form action="file-handler.php" method="post" enctype="multipart/form-data"><input type="file" name="myfile" /><input type="submit" /></form>')
+        loadForm = $('<form id="loadForm" action="file-handler.php" method="post" enctype="multipart/form-data"><input type="file" name="upload" /></form>')
 
-        imagesBlock = $('<div></div>')
+        imagesBlock = $('<div id="imagesBlock"></div>')
 
         imagesBlock.css({
             'position': 'relative',
             'width'   : '250px',
-            'height'  : '200px',
+            'height'  : '300px',
             'background': 'transparent',
             'border'  : 'solid 1px #f57507',
             'margin'  : '10px',
-            'overflow': 'auto'
+            'overflow': 'auto',
+            'border-radius' : '5px'
+
         });
 
-        addImageBtn.on('change', function(event) {
+        loadBtn.css({
+            'display'    : 'block',
+            'background' : 'transparent',
+            'color'      : 'white',
+            'margin-top' : '10px',
+            'border'     : 'solid 1px #f57507',
+            'border-radius' : '5px'
+
+
+        });
+
+        div.css({
+            'margin': '10px'
+        });
+
+        loadBtn.click(function(event) {
+            var file_data = $('#loadForm')[0].elements[0].files[0];   
+            var form_data = new FormData();                  
+            form_data.append('upload', file_data);
+            console.log(form_data, file_data)                           
+                $.ajax({
+                    url: 'file-handler.php', // point to server-side PHP script 
+                    dataType: 'text',  // what to expect back from the PHP script, if anything
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,                         
+                    type: 'post',
+                    success: function(php_script_response){
+                        console.log(php_script_response); // display response from the PHP script, if any
+                    }
+                });
+        });
+
+        loadForm.css('margin', '10px'); 
+
+        loadForm.on('change', function(event) {
            editor.readAsUrl($(this)[0].elements[0].files, (src)=>{
 
               preview = $('<img src="'+src+'" />')
@@ -61,8 +99,8 @@ const editor = {
               preview.css({
                   'position': 'relative',
                   'float'   : 'left',
-                  'width'   : '125px',
-                  'height'  : '100px',
+                  'width'   : '100px',
+                  'height'  : '120px',
                   'margin'  : '10px'
               });
 
@@ -71,24 +109,12 @@ const editor = {
            })
         });
 
-        addImageBtn.css('margin', '10px'); 
 
         saveBtn = $('<input class="editBtn" style="position: absolute; display: block; outline: none;" type="button" value="Применить" />')
 
-        imagesLabel.css({
-            'position' : 'relative',
-            'color' : 'white',
-            'font-family' : 'sans-serif',
-            'font-size'  : '25px',
-            'margin' : '10px'
-        })
+        loadBtn.appendTo(loadForm)
 
-
-        div.css({
-            'margin': '10px'
-        });
-
-        div.append(imagesLabel, addImageBtn, imagesBlock, saveBtn)
+        div.append(loadForm, imagesBlock, saveBtn)
 
         $('.editWindow').append(div)
     },

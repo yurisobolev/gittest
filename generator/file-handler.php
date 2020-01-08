@@ -1,4 +1,6 @@
 <?php
+
+
 // Перезапишем переменные для удобства
 $filePath  = $_FILES['upload']['tmp_name'];
 $errorCode = $_FILES['upload']['error'];
@@ -49,5 +51,3 @@ $format = str_replace('jpeg', 'jpg', $extension);
 if (!move_uploaded_file($filePath, __DIR__ . '/pics/' . $name . $format)) {
     die('При записи изображения на диск произошла ошибка.');
 }
-
-?>
