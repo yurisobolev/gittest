@@ -224,6 +224,7 @@ i:hover{
     right: 0;
     color: white;
     transition: 0.4s;
+    outline: none;
 }
 
 .exitBtn:hover{

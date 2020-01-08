@@ -10,16 +10,6 @@ jQuery(document).ready(($) => {
 
 })
 
-function preview(file, el) {
-    var reader = new FileReader();
-    reader.addEventListener('load', function(event) {
-        var img = document.createElement('img');
-        $(el.parents()[2]).find('img').attr('src', event.target.result);
-
-    });
-    reader.readAsDataURL(file);
-}
-
 var blockTemplate;
 
 
@@ -49,35 +39,61 @@ const editor = {
 
         imagesLabel = $('<p> Изображения </p>')
 
-        images = $('<div></div>')
+        addImageBtn = $('<form action="file-handler.php" method="post" enctype="multipart/form-data"><input type="file" name="myfile" /><input type="submit" /></form>')
 
-        addImageBtn = $('<div></div>') 
+        imagesBlock = $('<div></div>')
 
-        saveBtn = $('<input class="editBtn" type="button" value="Применить" />')
+        imagesBlock.css({
+            'position': 'relative',
+            'width'   : '250px',
+            'height'  : '200px',
+            'background': 'transparent',
+            'border'  : 'solid 1px #f57507',
+            'margin'  : '10px',
+            'overflow': 'auto'
+        });
 
-        images.css({
-            'position' : 'relative',
-            'border'   : 'solid 1px #f57507',
-            'width' : '300px',
-            'height' : '100px',
-            'margin': '10px',
-            'border-radius': '8px'
-        })
+        addImageBtn.on('change', function(event) {
+           editor.readAsUrl($(this)[0].elements[0].files, (src)=>{
+
+              preview = $('<img src="'+src+'" />')
+
+              preview.css({
+                  'position': 'relative',
+                  'float'   : 'left',
+                  'width'   : '125px',
+                  'height'  : '100px',
+                  'margin'  : '10px'
+              });
+
+              preview.appendTo(imagesBlock)
+
+           })
+        });
+
+        addImageBtn.css('margin', '10px'); 
+
+        saveBtn = $('<input class="editBtn" style="position: absolute; display: block; outline: none;" type="button" value="Применить" />')
 
         imagesLabel.css({
             'position' : 'relative',
             'color' : 'white',
             'font-family' : 'sans-serif',
             'font-size'  : '25px',
-            'margin' : '10px',
+            'margin' : '10px'
         })
 
-        div.append(imagesLabel, images, saveBtn)
+
+        div.css({
+            'margin': '10px'
+        });
+
+        div.append(imagesLabel, addImageBtn, imagesBlock, saveBtn)
 
         $('.editWindow').append(div)
     },
 
-    createSlider: (parent) =>{
+    createSlider: (parentID) =>{
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
 
         slider = $('<div id="imgSlider_'+id+'"></div>')
@@ -87,6 +103,8 @@ const editor = {
 
         slider.append(arrowRight)
         slider.append(arrowLeft)
+
+        slider.attr('title', 'Редактирование двойным кликом');
 
         slider.css({
             'position' : 'absolute',
@@ -119,10 +137,10 @@ const editor = {
             });
         })
 
-        parent.append(slider)
+        $("#div_" + parentID).append(slider)
     },
 
-    createText: (parent) =>{
+    createText: (parentID) =>{
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
         textArea = $('<textarea placeholder="Расскажите о экскурсии" id="textArea_' + id + '"></textarea>')
 
@@ -146,7 +164,19 @@ const editor = {
         })
 
         console.log("textArea_" + id)
-        parent.append(textArea) 
+        $("#div_" + parentID).append(textArea) 
+    },
+    readAsUrl: (files, callback) =>{
+
+        if (files && files[0]) {
+            var reader = new FileReader();
+    
+            reader.onload = function(e) {
+             callback(e.target.result)
+        }
+    
+        reader.readAsDataURL(files[0]);
+        }
     }
 }
 
@@ -198,6 +228,8 @@ const generator = {
 
    createEditWindow: (slide_id) => {
 
+            divID = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5));
+
             for (var i = 0; i < generator.slides.length; i++) {
                 if (generator.slides[i].id == slide_id) {
                     editor.slideOnEdit = generator.slides[i]
@@ -211,7 +243,7 @@ const generator = {
             overlayOn();
             $('#overlay').empty()
 
-            div = $('<div>')
+            div = $('<div id="div_'+divID+'">')
 
             editWindow = $('<div class="editWindow"></div>')
 
@@ -238,7 +270,7 @@ const generator = {
             })
 
             addImage.click(function(event) {
-                editor.createSlider(div)
+                editor.createSlider(divID)
             })
 
             addText.click(function(event) {
@@ -247,7 +279,7 @@ const generator = {
                 }
                 else if(generator.textAreasCount < 1){
                     generator.textAreasCount += 1
-                    editor.createText(div)
+                    editor.createText(divID)
                 }
             })
 
