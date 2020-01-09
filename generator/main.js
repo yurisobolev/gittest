@@ -35,13 +35,19 @@ const editor = {
     },
     editSlider:(el) =>{
 
+        _data  = {
+            images: []
+        }
+
         div = $('<div></div>')
 
-        loadBtn = $('<input  type="button" value="Загрузить"/>')
+        loadBtn = $('<input id="loadBtn"  type="button" value="Загрузить"/>')
 
-        loadForm = $('<form id="loadForm" action="file-handler.php" method="post" enctype="multipart/form-data"><input type="file" name="upload" /></form>')
+        loadForm = $('<form id="loadForm" action="file-handler.php" method="post" enctype="multipart/form-data"><label id="browse-btn" for="upload-photo">Выбрать файл</label><input style="display:none;" id="upload-photo" type="file" name="upload" /></form>')
 
         imagesBlock = $('<div id="imagesBlock"></div>')
+
+        saveBtn = $('<input class="editBtn" style="position: absolute; display: block; outline: none;" type="button" value="Применить" />')
 
         imagesBlock.css({
             'position': 'relative',
@@ -61,9 +67,9 @@ const editor = {
             'color'      : 'white',
             'margin-top' : '10px',
             'border'     : 'solid 1px #f57507',
-            'border-radius' : '5px'
-
-
+            'border-radius' : '5px',
+            'transition' : '0.3s',
+            'outline'    : 'none'
         });
 
         div.css({
@@ -92,16 +98,22 @@ const editor = {
         loadForm.css('margin', '10px'); 
 
         loadForm.on('change', function(event) {
+
            editor.readAsUrl($(this)[0].elements[0].files, (src)=>{
 
               preview = $('<img src="'+src+'" />')
+
+              _data.images.push(src)
+              console.log(_data)
 
               preview.css({
                   'position': 'relative',
                   'float'   : 'left',
                   'width'   : '100px',
                   'height'  : '120px',
-                  'margin'  : '10px'
+                  'margin'  : '10px',
+                  'padding' : '2px',
+                  'border'  : '1px solid white'
               });
 
               preview.appendTo(imagesBlock)
@@ -109,8 +121,11 @@ const editor = {
            })
         });
 
+        saveBtn.click(function(event) {
+            $('.owl-carousel').remove();
+            editor.createSlider(generator.editWindowID, _data.images)
+        });
 
-        saveBtn = $('<input class="editBtn" style="position: absolute; display: block; outline: none;" type="button" value="Применить" />')
 
         loadBtn.appendTo(loadForm)
 
@@ -119,49 +134,48 @@ const editor = {
         $('.editWindow').append(div)
     },
 
-    createSlider: (parentID) =>{
+    createSlider: (parentID, images, callback) =>{
+        var previewImage;
+
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
 
-        slider = $('<div id="imgSlider_'+id+'"></div>')
+        slider = $('<div style="opacity:0;" class="owl-carousel"></div>')
+        if (images != undefined) {
+            for (i in images) {
+                src = images[i]
+                previewImage = $('<img src="'+src+'" >');
+                slider.append(previewImage)
+            }
+        }
+        else{
+            previewImage = $('<img src="icons/picture.png" >')
+            slider.append(previewImage)
+        }
 
-        arrowRight = $('<i class="right"></i>') 
-        arrowLeft  = $('<i class="left"></i>')
-
-        slider.append(arrowRight)
-        slider.append(arrowLeft)
-
-        slider.attr('title', 'Редактирование двойным кликом');
+        slider.owlCarousel({
+            items: 1,
+            margin: 30,
+            center: true,
+            nav: true
+        });
 
         slider.css({
-            'position' : 'absolute',
-            'display' : 'block',
-            'border':'solid 1px #f57507',
-            'border-radius' : '10px',
-            'width' : '450px',
-            'height': '256px',
-            'margin': '20px',
-            'touch-action' : 'none',
-            'transition' : '0.3s'
-        })
+            'width' : '325',
+            'height': '300',
+            'border': '1px solid white',
+            'padding': '10px',
+            'margin' : '20px' 
+        });
+
+        slider.on('refreshed.owl.carousel', function(event) {
+            slider.css('opacity', '1');
+            callback();
+        });
+
 
         slider.dblclick(function() {
             editor.editBlock(this, 'slider')
         });
-
-        slider.hover(function(){
-            $(this).css({
-                'border' : 'solid 3px wheat',
-                'cursor' : 'pointer',
-                'opacity' : '0.3'
-            });
-            }, function(){
-            $(this).css({
-                'border' : 'solid 1px #f57507',
-                'cursor' : 'default',
-                'opacity' : '1'
-
-            });
-        })
 
         $("#div_" + parentID).append(slider)
     },
@@ -221,6 +235,7 @@ const generator = {
     count: 0,
     slides: [],
     textAreasCount : 0,
+    editWindowID: '', 
 
     create: () => {
 
@@ -254,7 +269,9 @@ const generator = {
 
    createEditWindow: (slide_id) => {
 
-            divID = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5));
+            generator.editWindowID = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5));
+
+            editWindowID = generator.editWindowID
 
             for (var i = 0; i < generator.slides.length; i++) {
                 if (generator.slides[i].id == slide_id) {
@@ -269,7 +286,7 @@ const generator = {
             overlayOn();
             $('#overlay').empty()
 
-            div = $('<div id="div_'+divID+'">')
+            div = $('<div id="div_'+editWindowID+'">')
 
             editWindow = $('<div class="editWindow"></div>')
 
@@ -296,7 +313,10 @@ const generator = {
             })
 
             addImage.click(function(event) {
-                editor.createSlider(divID)
+                addImage.attr('disabled', 'disabled');
+                editor.createSlider(editWindowID, undefined, ()=>{
+                    addImage.removeAttr('disabled');
+                })
             })
 
             addText.click(function(event) {
@@ -305,7 +325,7 @@ const generator = {
                 }
                 else if(generator.textAreasCount < 1){
                     generator.textAreasCount += 1
-                    editor.createText(divID)
+                    editor.createText(editWindowID)
                 }
             })
 
