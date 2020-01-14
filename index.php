@@ -20,7 +20,7 @@
 </header>
 
 <body>
-  <div class="img_logo"></div>
+ <!--  <div class="img_logo"></div> -->
     <div class="nav">
         <a href="#">Главная</a>
         <a href="#">Создать</a>
@@ -116,7 +116,6 @@
 <body>
 </html>
 <script type="text/javascript">
-   <script type="text/javascript">
 $(function(){
 $(window).scroll(function() {
 var top = $(document).scrollTop();
@@ -124,5 +123,4 @@ if (top < 100) $(".nav").css({top: '0', position: 'relative'});
 else $(".nav").css({top: '0', position: 'fixed'});
 });
 });
-</script>
 </script>

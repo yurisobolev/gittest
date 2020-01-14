@@ -4,6 +4,7 @@
 
 body {
     font-family: sans-serif;
+    background: black;
 }
 
 
@@ -15,21 +16,14 @@ section{
     max-width: 1000px;
     margin: 0 auto;
 }
-.header {
-  padding-top: 85px;
-  width: 100%;
-  height: 100px;
-
-}
 .nav {
-  padding-top: 15px;
   padding-right:50%;
   height: 120px;
   color: white;
   width: 100%;
   position: fixed;
   top: 0;
-  background-image: linear-gradient(to right, #808080, black);
+  background-image: transparent;
 }
  .nav a {
   float:right;
@@ -295,6 +289,7 @@ img {
 /* About Section */
 
 #about {
+  color: white;
     border-top: solid 2px #f4f4f4;
     padding: 30px 0;
 }
@@ -313,16 +308,17 @@ img {
 }
 
 #about-text i {
-    color:#008ed6;
+    color:white;
 }
 
 #about2 {
-    background-color: #f2f2f2;
+    background-color: #111033;
     padding: 30px 0px;
 }
 
 #about2-text {
     margin-top: 20px;
+    color: white;
 }
 
 /* Testimonials Section */
