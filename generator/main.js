@@ -95,7 +95,10 @@ const editor = {
                 });
         });
 
-        loadForm.css('margin', '10px'); 
+        loadForm.css({
+            'margin-top'  : '30px',
+            'margin-left' : '10px'
+        }); 
 
         loadForm.on('change', function(event) {
 
@@ -109,8 +112,8 @@ const editor = {
               preview.css({
                   'position': 'relative',
                   'float'   : 'left',
-                  'width'   : '100px',
-                  'height'  : '120px',
+                  'width'   : '120px',
+                  'height'  : '100px',
                   'margin'  : '10px',
                   'padding' : '2px',
                   'border'  : '1px solid white'
@@ -144,25 +147,32 @@ const editor = {
             for (i in images) {
                 src = images[i]
                 previewImage = $('<img src="'+src+'" >');
+                previewImage.css({
+                'width' : '250',
+                'height' : '220px'
+            })
                 slider.append(previewImage)
             }
         }
         else{
             previewImage = $('<img src="icons/picture.png" >')
-            slider.append(previewImage)
+            previewImage.css({
+                'width' : '250',
+                'height' : '220px'
+            })
+            slider.append(previewImage, previewImage.clone(), previewImage.clone())
         }
 
+
         slider.owlCarousel({
-            items: 1,
-            margin: 30,
-            center: true,
-            nav: true
+            items: 3,
+            margin: 150
         });
 
         slider.css({
-            'width' : '325',
+            'width' : 'initial',
             'height': '300',
-            'border': '1px solid white',
+            'border': '1px solid #f57507',
             'padding': '10px',
             'margin' : '20px' 
         });

@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.theme.default.min.css">
 
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/generator.css">
     <link rel="stylesheet" type="text/css" href="../css/socialbtns.css">
 

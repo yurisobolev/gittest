@@ -1,97 +1,128 @@
-﻿<!DOCTYPE>
-<!DOCTYPE html>
-<html>
-   <head>
-      <meta charset="utf-8">
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-      <script src="js/index.js"></script>
-      <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-      <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-      <link rel="stylesheet" type="text/css" href="css/main.css">
-      <link rel="stylesheet" type="text/css" href="css/socialbtns.css">
-      <title>moi sait</title>
-   </head>
-   <body>
-    <?php 
-        require 'registration/db.php';
-    ?>
+﻿
+ 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>GIDIT</title>
 
 
-        <?php if ( isset ($_SESSION['logged_user']) ) : ?>
-          
-        <?php echo "<p style='color:green'>Привет </p>" . $_SESSION['logged_user']->login; ?>!<br/>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
 
-          <a href="registration/logout.php">Выйти</a>
-
-    <?php else : ?>
-        <a href="registration/login.php">Авторизация</a>
-        <a href="registration/signup.php">Регистрация</a>
-    <?php endif; ?>
+<header class="header">
 
 
-      <div id="footer">
-         <div id="navigate">
-            <ul id=top_menu>
-               <li><a href="#">Главная</a></li>
-               <li><a href="catalog.html">Каталог</a></li>
-               <li><a href="generator/index.html">Создать</a></li>
-               <li><a href="filter/">Каталог</a></li>
-               <li><a href="generator/index.php">Создать</a></li>
-               <li><a href="catalog.html">Каталог</a></li>
-               <li><a href="generator/index.html">Создать</a></li>
+</header>
 
-            </ul>
-            <ul class='social'>
-               <li>
-                  <a class="fa fa-facebook" href="#">    
-                  <span>Facebook</span>
-                  </a> 
-               </li>
-               <li>
-                  <a class="fa fa-youtube" href="https://youtube.com/">
-                  <span>Youtube</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="fa fa-vk" href="https://vk.com/">
-                  <span>VK</span>
-                  </a>
-               </li>
-               <li>
-                  <a class="fa fa-instagram" href="#">    
-                  <span>Instagram</span>
-                  </a> 
-               </li>
-            </ul>
-         </div>
-      </div>
-      <div class="scaleable-wrapper" id="scaleable-wrapper">
-      <div class="wrap-discription" id="wrap-discription">
-   
-      <div class="wrap-discription">
-      <div class="gid">
-         <p class="start_text">EASYGID</p>
-         <button id=start>начать</button>
-         <p class="start_text">экскурсии, легко</p>
-      </div> 
+<body>
+  <div class="img_logo"></div>
+    <div class="nav">
+        <a href="#">Главная</a>
+        <a href="#">Создать</a>
+        <a href="#">Каталог</a>
     </div>
-  </div>
-   </body>
+
+    <!--Hero & Navigation-->
+    <div id="hero">
+    
+    <section>
+        <div class="row container">
+            <div id="hero-copy" class="col-2 column">
+                <p class="intro-text">О проекте</p>
+                <h1 class="headline-text-light">Проект GIDIT платформа для создания экскурсий</h1>
+                <p class="description-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p>
+                <button class="button-to_generator">Try now</button>
+                
+            </div>
+            <div id="hero-phone" class="col-2 column">
+                <img src="">
+            </div>
+        </div>
+    </section>
+    </div>
+    <!--Features Section-->
+    
+    <!--About 1 Section-->
+    <section id="about">
+        <div class="row container">
+            <div id="about-phone" class="col-2 colummn">
+                <img src="">
+            </div>
+            <div id="about-text" class="col-2 column">
+                <p class="intro-text">НАЗВАНИЕ</p>
+                <h2>ЙОУУУУ ТЕКСТ ТОП</h2>
+                <p class="description-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
+               
+            </div>
+        </div>
+    </section>
+    <!--About 2 Section-->
+    <section id="about2">
+        <div  class="row container">
+            <div id="about2-text" class="col-2 column">
+                <p class="intro-text">НАЗВАНИЕ</p>
+                <h2>ЙОУУУУ ТЕКСТ ТОП</h2>
+                <p class="description-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
+            </div>
+            <div class="col-2 colummn">
+                <img src="">
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    
+    <!--CTA Section -->
+    <section id="cta-section" >
+        <div  class="row container cta">
+            <h2>ЙОУ ТЕКСТ ЙОУУУУУУУУУ ( скачать приложение )</h2>
+            <div class="cta-buttons">
+                <button class="button-light">about app</button>
+                <button class="button-dark">Download Now</button>
+            </div>
+        </div>
+    </section>
+    <!--Pricing & Plans -->
+    <section id="pricing">
+        <div class ="row container"> 
+            <p class="intro-text">НАЗВАНИЕ</p>
+            <h2>Pricing & Plans</h2>
+        
+    </section>
+<!-- Contact Us -->
+ 
+      
+          </form>
+      </div>
+      
+ </section>
+<!--Footer -->
+    <footer id="footer-info">
+        <div class="row container">
+        <div class="footer-icons">
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-youtube"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-vk"></i>
+        <p class="footer-copyright">copyright © 2019 </p>
+        </div>
+        </div>
+    </footer>
+<body>
 </html>
-<script type="text/javascript" href="generator/index.html">
-   $(".gid").hover(
-       function() {
-           $('button').show('slow')
-       },
-       function() {
-           $('button').hide('slow')
-       }
-   );
-   $(document).ready(()=>{
-         $('#start').click(()=>{
-           document.location.href = "C:/Users/%D0%9F%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C/gittest/generator/index.html"
-         })
-       })
+<script type="text/javascript">
+   <script type="text/javascript">
+$(function(){
+$(window).scroll(function() {
+var top = $(document).scrollTop();
+if (top < 100) $(".nav").css({top: '0', position: 'relative'});
+else $(".nav").css({top: '0', position: 'fixed'});
+});
+});
+</script>
 </script>
