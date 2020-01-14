@@ -165,16 +165,17 @@ const editor = {
 
 
         slider.owlCarousel({
-            items: 3,
-            margin: 150
+            items: 2,
+            margin: 30
         });
 
         slider.css({
-            'width' : 'initial',
-            'height': '300',
+            'width' : '500',
+            'height': '270',
             'border': '1px solid #f57507',
             'padding': '10px',
-            'margin' : '20px' 
+            'margin-left' : '-292px',
+            'left' : '50%'
         });
 
         slider.on('refreshed.owl.carousel', function(event) {
