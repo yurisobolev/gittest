@@ -29,11 +29,78 @@ const editor = {
     },
     editTextArea:(el) =>{
 
+        backgroundColorArea = $('<div class="optionsArea">')
+
+        textColorArea = $('<div class="optionsArea">')
+
+        fontSizeArea = $('<div class="optionsArea">')
+
+        backgroundColorArea.append('<p class="optionTitle">Цвет фона текста</p>')
+        textColorArea.append('<p class="optionTitle">Цвет текста</p>')
+
+        backgroundColorArea.append($('<div class="background_picker">'))
+        textColorArea.append($('<div class="text_picker">'))
+
+        $('.editWindow').append(backgroundColorArea, textColorArea, fontSizeArea)
+
+        const background_picker = Pickr.create({
+            el: '.background_picker',
+            theme: 'nano', // or 'monolith', or 'nano'
+
+            swatches: null,
+
+            components: {
+
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
+
+                // Input / output Options
+                interaction: {
+                    input: true,
+                    hex: true,
+                    rgba: true,
+                    save : true,
+                    clear: true
+                }
+            }
+        });
+
+        const text_picker = Pickr.create({
+            el: '.text_picker',
+            theme: 'nano', // or 'monolith', or 'nano'
+
+            swatches: null,
+
+            components: {
+
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
+
+                // Input / output Options
+                interaction: {
+                    input: true,
+                    hex: true,
+                    rgba: true,
+                    save : true,
+                    clear: true
+                }
+            }
+        });
+
+
+        $('.pickr').css('display', 'inline-block');
+
+
+
     },
     editAudio:() =>{
 
     },
-    editSlider:(el) =>{
+    takePhotos:(callback) =>{
 
         _data  = {
             images: []
@@ -82,15 +149,15 @@ const editor = {
             form_data.append('upload', file_data);
             console.log(form_data, file_data)                           
                 $.ajax({
-                    url: 'file-handler.php', // point to server-side PHP script 
-                    dataType: 'text',  // what to expect back from the PHP script, if anything
+                    url: 'file-handler.php', 
+                    dataType: 'text',  
                     cache: false,
                     contentType: false,
                     processData: false,
                     data: form_data,                         
                     type: 'post',
                     success: function(php_script_response){
-                        console.log(php_script_response); // display response from the PHP script, if any
+                        console.log(php_script_response); 
                     }
                 });
         });
@@ -125,8 +192,7 @@ const editor = {
         });
 
         saveBtn.click(function(event) {
-            $('.owl-carousel').remove();
-            editor.createSlider(generator.editWindowID, _data.images)
+            callback(_data)
         });
 
 
@@ -137,62 +203,31 @@ const editor = {
         $('.editWindow').append(div)
     },
 
-    createSlider: (parentID, images, callback) =>{
-        var previewImage;
+    setBackground: (parentID, images, callback) =>{
 
-        id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
+        $('#div_' + parentID).css({
+            'opacity' : '0.5'
+        })
+        $('.editBtn').prop( "disabled", true );
 
-        slider = $('<div style="opacity:0;" class="owl-carousel"></div>')
-        if (images != undefined) {
-            for (i in images) {
-                src = images[i]
-                previewImage = $('<img src="'+src+'" >');
-                previewImage.css({
-                'width' : '250',
-                'height' : '220px'
+        editor.takePhotos((_data)=>{
+            $("#div_" + parentID).css({
+                'background-image' : 'url("'+_data.images[0]+'")',
+                'background-repeat' : 'no-repeat',
+                'background-size'   : 'contain'
+            });
+            $('#div_' + parentID).css({
+            'opacity' : '1'
             })
-                slider.append(previewImage)
-            }
-        }
-        else{
-            previewImage = $('<img src="icons/picture.png" >')
-            previewImage.css({
-                'width' : '250',
-                'height' : '220px'
-            })
-            slider.append(previewImage, previewImage.clone(), previewImage.clone())
-        }
+            $('.editBtn').prop( "disabled", false );
+            $('.editWindow').empty()
+        })
 
-
-        slider.owlCarousel({
-            items: 2,
-            margin: 30
-        });
-
-        slider.css({
-            'width' : '500',
-            'height': '270',
-            'border': '1px solid #f57507',
-            'padding': '10px',
-            'margin-left' : '-292px',
-            'left' : '50%'
-        });
-
-        slider.on('refreshed.owl.carousel', function(event) {
-            slider.css('opacity', '1');
-            callback();
-        });
-
-
-        slider.dblclick(function() {
-            editor.editBlock(this, 'slider')
-        });
-
-        $("#div_" + parentID).append(slider)
     },
 
     createText: (parentID) =>{
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
+
         textArea = $('<textarea placeholder="Расскажите о экскурсии" id="textArea_' + id + '"></textarea>')
 
         textArea.css({
@@ -214,7 +249,10 @@ const editor = {
 
         })
 
-        console.log("textArea_" + id)
+        textArea.dblclick(function(event) {
+            editor.editBlock(textArea, 'textArea')
+        });
+
         $("#div_" + parentID).append(textArea) 
     },
     readAsUrl: (files, callback) =>{
@@ -269,13 +307,6 @@ const generator = {
             generator.createEditWindow(parseInt($(this).attr('data-slide')));
         });
 
-        // $(".input-file").on('change', function() {
-        //     var files = this.files;
-
-        //     for (var i = 0; i < files.length; i++) {
-        //         preview(files[i], $(this));
-        //     }
-        // });
     },
 
    createEditWindow: (slide_id) => {
@@ -303,7 +334,7 @@ const generator = {
 
             addText = $('<input  class="editBtn"  type="button" value="Текст">')
 
-            addImage = $('<input class="editBtn"  type="button" value="Изображения">')
+            addBackground = $('<input class="editBtn"  type="button" value="Фон">')
 
             addAudio = $('<input class="editBtn"  type="button" value="Аудио">')
 
@@ -323,10 +354,10 @@ const generator = {
                 */
             })
 
-            addImage.click(function(event) {
-                addImage.attr('disabled', 'disabled');
-                editor.createSlider(editWindowID, undefined, ()=>{
-                    addImage.removeAttr('disabled');
+            addBackground.click(function(event) {
+                addBackground.attr('disabled', 'disabled');
+                editor.setBackground(editWindowID, undefined, ()=>{
+                    addBackground.removeAttr('disabled');
                 })
             })
 
@@ -367,7 +398,7 @@ const generator = {
                  'overflow': 'hidden'
              });
 
-             div.append(addText, addImage, addAudio, exitBtn)
+             div.append(addText, addBackground, addAudio, exitBtn)
 
              $("#overlay").append(div, editWindow)
     }

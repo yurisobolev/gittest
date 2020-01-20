@@ -8,6 +8,10 @@ body{
 	display: inline;
 }
 
+p{
+	font-family: sans-serif;
+}
+
 
 i {
   border: solid #f57507;
@@ -278,4 +282,14 @@ i:hover{
 	color: white;
 	font-size: 15px;
 	cursor: pointer;
+}
+
+.optionsArea{
+    margin: 10px;
+    border-bottom: 1px solid white;
+}
+.optionTitle{
+	color: white;
+	margin: 10px; 
+	display: inline-block;
 }
