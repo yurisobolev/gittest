@@ -1,128 +1,559 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-background: #1c1c1c
-}
-
-#footer{
-  position: relative;
-    position: fixed;
+    font-family: sans-serif;
     background: black;
-    width: 20%;
-    height: 100%;
 }
 
-#navigate{
-  float: left;
-    position: absolute;
-    margin-top: 5%;
-    margin-left: 2%;
-    margin-right: 5%;
-    background-color: transparent;
-    border: 1.5px solid #f57507;
-    border-radius: 6px;
-    width: 300px;
-    max-width: 300px;
-    min-width: 200px;
-z-index: 1;
 
+section{
+  left: 0;
 }
 
-#top_menu{
-  position: relative;
-  display: grid;
-  list-style: none;
-  padding-left: 0;
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
 }
+.nav {
+margin-left: 10%;
 
-#top_menu > li{
-  display: inline-block;  
-  position: relative;
-  margin-top: 20px;
-  padding: 20px;
-  text-align: center;
-}
-#top_menu > li > a{
-  display: inline-block;
-  padding: 10px 20px; 
+  padding-right:50%;
+  height: 120px;
   color: white;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-  text-decoration: none; 
-  font-size: 25px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-image: transparent;
 }
-#top_menu > li > a:hover{
-  color: #FFB028;
+ .nav a {
+  float:right;
+   text-decoration: none;
+  padding:15px;
+  display: block;
+  color: #fff;
+  font-size: 26px;
+
+
 }
-#top_menu > li:hover > ul{
- color: #FFB028;
+.nav a:hover {
+  color: #000;
+  background: #808080;
+}
+
+.button-to_generator {
+  margin-left: 32%;
+  background-color: transparent;
+  border: solid 1px white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.button-to_generator:hover {
+  background-color: #808080;
+  color: black;
+}
+.img_logo{
+  margin-left: 15%;
+  border: solid 1px white ;
+  background-image: url(http://cataloniarentals.com/catalonia/images/logo.png);
+  margin-top: -5px;
+  width: 20%;
+  height:100%;
+}
+img {
+    width: 100%;
+}
+
+/* Navigation Styling */
+
+.navbar {
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+.main-nav {
+    list-style-type: none;
+}
+
+.nav-links,
+
+.main-nav li {
+    text-align: center;
+    margin: 15px auto;
+}
+
+
+
+.navbar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer; 
+    color: #fff;
+    font-size: 24px;
+}
+
+/* Hides Menu by Default */
+
+.main-nav {
+    list-style-type: none;
+    display: none;
+}
+
+.active {
   display: block;
 }
-.wrap-discription{ 
- border: 1.5px solid #848482;
-  width: 74%;
-  height: 30%;
-  padding: 50px;
-  text-align: center;
-  background: white;
-  position: relative;
-  margin-left: 60%;
-  transform: translate(-50%, -50%);
-  transform-origin: center center;
+
+@media screen and (min-width: 768px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 70px;
+        align-items: center;
+    }
+    .main-nav {
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .main-nav li {
+        margin: 0;
+    }
+    .nav-links {
+        margin-left: 40px;
+    }
+    .logo {
+        margin-top: 0;
+    }
+   .navbar-toggle {
+       display: none;
+    }
+   
+    .nav-links:hover {
+        border-bottom: solid 5px #008ed6;
+    }
 }
 
-.scaleable-wrapper {
-  padding: 20px;
-  resize: both;
-  position: relative;
-  background: #666;
-  height: 400px;
+/* Column classes */
+
+.col-2 {
+  float: left;
+  width: 50%;
 }
-.gid {
-  position: relative;
-  margin-top: 45px;
-  padding: 35px;
-  left: 30%;
-  margin-top: 40%;
-  margin-left: -150px;
-  position: relative;
-  font-size: 30px;
-  color:white;
+
+.col-3 {
+    float: left;
+    width: 33.3%;
+}
+
+.col-4 {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .column {
+        float: left;
+        width: 100%;
+    }
+}
+
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* Text Stying */
+
+.intro-text{
+    color: #008ed6;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.headline-text-light {
+    color: #fff;
+    
+}
+
+.description-text {
+    color: #909091;
+}
+
+/* Buttons */
+
+.button-dark {
+ background-color: transparent;
+  border: solid 1px white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  text-transform: uppercase;
   display: inline-block;
 }
-.gid hover{
-  border: solid #FFB028 ;
-}
-
-#start{
-  background-color: #D3D3D3;
-  border:solid #D3D3D3;
-  margin-left: 175px;
-  margin-top: 15px;
-  font-size: 35px;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  display: none;
-}
-.start_text {
-  margin-left: 30%;
-  text-align:center;
-  font-size: 36px;
+.button-dark:hover {
+ background-color: #808080;
   color: black;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-  position: relative;
-  width: 600px;
-}
-.social {
-  position: fixed;
-  width: 200px;
-  height: 220px;
-  margin-top: 30px;
-  perspective: 1000px;
 }
 
-.box{
-  width: 300px;
-  margin: 0 auto;
+.button-light {
+  background-color: transparent;
+  border: solid 1px white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.button-light:hover {
+   background-color: #808080;
+  color: black;
+}
+
+/* Main Hero Section */
+
+#hero {
+    background: url("https://ivankondratyev.ru/images/red.jpg") no-repeat;
+    background-size: cover;
+    height: 1200px;
+}
+
+@media screen and (min-width:768px) {
+#hero-phone img {
+    width: 400px;
+}
+}
+
+#hero-phone {
+    text-align: center;
+}
+
+#hero-copy {
+    margin-top: 50px;
+}
+
+/* Features Section */
+
+#features {
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.feature-icon {
+    border: 1px solid #787878;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    
+}
+
+.feature-icon i {
+    font-size: 50px;
+    padding-top: 25px;
+    color: #008ed6;
+}
+
+#features p {
+    padding: 0 20px;
+}
+
+/* About Section */
+
+#about {
+  color: white;
+    border-top: solid 2px #f4f4f4;
+    padding: 30px 0;
+}
+
+@media screen and (min-width:768px) {
+#about-phone img {
+    width: 400px;
+}
+}
+
+#about-text li {
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 2;
+}
+
+#about-text i {
+    color:white;
+}
+
+#about2 {
+    background-color: #111033;
+    padding: 30px 0px;
+}
+
+#about2-text {
+    margin-top: 20px;
+    color: white;
+}
+
+/* Testimonials Section */
+
+#testimonials {
+    background: url("") no-repeat;
+    background-size: cover;
+    padding: 30px 0px;
+}
+
+#testimonials-heading {
+    text-align: center;
+}
+
+
+#testimonials {
+    color: #fff;
+}
+
+.testimonial-text {
+    padding: 10px;
+    font-style: italic;
+}
+
+.client {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.client img{
+    width: 60px;
+    padding: 10px
+}
+
+.client span {
+    display: block;
+    padding: 5px
+}
+
+
+/* CTA Section */
+
+#cta-section {
+    background-color: #000;
+    color: #fff;
+    padding: 30px;
+}
+
+@media screen and (min-width:768px){
+
+.cta {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.cta-buttons {
+    margin-left: 100px;
+}
+    
+}
+
+.cta-buttons {
+    margin: 0 auto;
+}
+
+
+/* Pricing Table */
+
+#pricing {
+    text-align: center;
+  height: 800px;
+}
+
+.price-table {
+    list-style: none;
+    border: 1px solid #999999;
+    text-align: center;
+    padding: 0px;
+}
+
+.price-table li {
+    list-style: none;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.price-header {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px;
+    
+}
+
+.price-cell {
+    padding: 30px;
+}
+
+.price-cell-special {
+    padding: 30px;
+    background-color: #008ed6;
+    color: #fff;
+}
+
+.price {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.per-month {
+    color: #999999;
+}
+
+.per-month-special {
+    color: #fff;
+}
+
+.price-text {
+    color: #999999;
+    padding: 30px;
+}
+
+.price-cta {
+    padding: 10px;
+}
+
+.price-button {
+  background-color: transparent;
+  border: solid 1px #999999;
+  color: #008ed6;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  text-transform: uppercase; 
+}
+
+.price-button-special {
+  background-color: #008ed6;
+  border: solid 1px #999999;
   color: #fff;
-  font-size: 18px;
-  font-family: 'Arial' sans-serif; 
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  text-transform: uppercase; 
+}
+
+
+/* Contact Section */
+
+#contact {
+    text-align: center;
+    background-color: #e0e0e0;
+    padding-top: 30px;
+}
+
+#contact i {
+    color: #008ed6;
+}
+
+.contact-info {
+    color: #999999;
+    font-size: 10px;
+}
+
+/* Form Styling */
+
+form {
+    width: 70%;
+    margin: 0 auto;
+    background-color: black;
+    padding: 30px;
+}
+
+.form-left {
+    width: 50%;
+    float: left;
+}
+
+.form-left input {
+    margin: 10px;
+    padding: 10px;
+    background-color: #000;
+    color: #999;
+}
+
+.form-right {
+    width: 50%;
+    float: left;
+}
+
+@media screen and (max-width: 600px) {
+    .form-left {
+        width: 100%;
+    }
+    .form-right {
+        width: 100%;
+    }
+}
+
+.form-right textarea {
+    background-color: #000;
+    color: #999;
+    height: 200px;
+    
+}
+
+
+/* Footer Styling */
+
+#footer-info {
+    background-color: #000;
+    color: #999;
+    padding: 20px;
+}
+
+.footer-icons {
+    text-align: center;
+    word-spacing: 10px;
+}
+
+.footer-copyright {
+    text-transform: uppercase;
+    font-size: 10px;
+    word-spacing: 0px;
 }

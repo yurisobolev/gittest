@@ -29,19 +29,92 @@ const editor = {
     },
     editTextArea:(el) =>{
 
+        backgroundColorArea = $('<div class="optionsArea">')
+
+        textColorArea = $('<div class="optionsArea">')
+
+        fontSizeArea = $('<div class="optionsArea">')
+
+        backgroundColorArea.append('<p class="optionTitle">Цвет фона текста</p>')
+        textColorArea.append('<p class="optionTitle">Цвет текста</p>')
+
+        backgroundColorArea.append($('<div class="background_picker">'))
+        textColorArea.append($('<div class="text_picker">'))
+
+        $('.editWindow').append(backgroundColorArea, textColorArea, fontSizeArea)
+
+        const background_picker = Pickr.create({
+            el: '.background_picker',
+            theme: 'nano', // or 'monolith', or 'nano'
+
+            swatches: null,
+
+            components: {
+
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
+
+                // Input / output Options
+                interaction: {
+                    input: true,
+                    hex: true,
+                    rgba: true,
+                    save : true,
+                    clear: true
+                }
+            }
+        });
+
+        const text_picker = Pickr.create({
+            el: '.text_picker',
+            theme: 'nano', // or 'monolith', or 'nano'
+
+            swatches: null,
+
+            components: {
+
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
+
+                // Input / output Options
+                interaction: {
+                    input: true,
+                    hex: true,
+                    rgba: true,
+                    save : true,
+                    clear: true
+                }
+            }
+        });
+
+
+        $('.pickr').css('display', 'inline-block');
+
+
+
     },
     editAudio:() =>{
 
     },
-    editSlider:(el) =>{
+    takePhotos:(callback) =>{
+
+        _data  = {
+            images: []
+        }
 
         div = $('<div></div>')
 
-        loadBtn = $('<input  type="button" value="Загрузить"/>')
+        loadBtn = $('<input id="loadBtn"  type="button" value="Загрузить"/>')
 
-        loadForm = $('<form id="loadForm" action="file-handler.php" method="post" enctype="multipart/form-data"><input type="file" name="upload" /></form>')
+        loadForm = $('<form id="loadForm" action="file-handler.php" method="post" enctype="multipart/form-data"><label id="browse-btn" for="upload-photo">Выбрать файл</label><input style="display:none;" id="upload-photo" type="file" name="upload" /></form>')
 
         imagesBlock = $('<div id="imagesBlock"></div>')
+
+        saveBtn = $('<input class="editBtn" style="position: absolute; display: block; outline: none;" type="button" value="Применить" />')
 
         imagesBlock.css({
             'position': 'relative',
@@ -61,9 +134,9 @@ const editor = {
             'color'      : 'white',
             'margin-top' : '10px',
             'border'     : 'solid 1px #f57507',
-            'border-radius' : '5px'
-
-
+            'border-radius' : '5px',
+            'transition' : '0.3s',
+            'outline'    : 'none'
         });
 
         div.css({
@@ -76,32 +149,41 @@ const editor = {
             form_data.append('upload', file_data);
             console.log(form_data, file_data)                           
                 $.ajax({
-                    url: 'file-handler.php', // point to server-side PHP script 
-                    dataType: 'text',  // what to expect back from the PHP script, if anything
+                    url: 'file-handler.php', 
+                    dataType: 'text',  
                     cache: false,
                     contentType: false,
                     processData: false,
                     data: form_data,                         
                     type: 'post',
                     success: function(php_script_response){
-                        console.log(php_script_response); // display response from the PHP script, if any
+                        console.log(php_script_response); 
                     }
                 });
         });
 
-        loadForm.css('margin', '10px'); 
+        loadForm.css({
+            'margin-top'  : '30px',
+            'margin-left' : '10px'
+        }); 
 
         loadForm.on('change', function(event) {
+
            editor.readAsUrl($(this)[0].elements[0].files, (src)=>{
 
               preview = $('<img src="'+src+'" />')
 
+              _data.images.push(src)
+              console.log(_data)
+
               preview.css({
                   'position': 'relative',
                   'float'   : 'left',
-                  'width'   : '100px',
-                  'height'  : '120px',
-                  'margin'  : '10px'
+                  'width'   : '120px',
+                  'height'  : '100px',
+                  'margin'  : '10px',
+                  'padding' : '2px',
+                  'border'  : '1px solid white'
               });
 
               preview.appendTo(imagesBlock)
@@ -109,8 +191,10 @@ const editor = {
            })
         });
 
+        saveBtn.click(function(event) {
+            callback(_data)
+        });
 
-        saveBtn = $('<input class="editBtn" style="position: absolute; display: block; outline: none;" type="button" value="Применить" />')
 
         loadBtn.appendTo(loadForm)
 
@@ -119,55 +203,31 @@ const editor = {
         $('.editWindow').append(div)
     },
 
-    createSlider: (parentID) =>{
-        id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
+    setBackground: (parentID, images, callback) =>{
 
-        slider = $('<div id="imgSlider_'+id+'"></div>')
+        $('#div_' + parentID).css({
+            'opacity' : '0.5'
+        })
+        $('.editBtn').prop( "disabled", true );
 
-        arrowRight = $('<i class="right"></i>') 
-        arrowLeft  = $('<i class="left"></i>')
-
-        slider.append(arrowRight)
-        slider.append(arrowLeft)
-
-        slider.attr('title', 'Редактирование двойным кликом');
-
-        slider.css({
-            'position' : 'absolute',
-            'display' : 'block',
-            'border':'solid 1px #f57507',
-            'border-radius' : '10px',
-            'width' : '450px',
-            'height': '256px',
-            'margin': '20px',
-            'touch-action' : 'none',
-            'transition' : '0.3s'
+        editor.takePhotos((_data)=>{
+            $("#div_" + parentID).css({
+                'background-image' : 'url("'+_data.images[0]+'")',
+                'background-repeat' : 'no-repeat',
+                'background-size'   : 'contain'
+            });
+            $('#div_' + parentID).css({
+            'opacity' : '1'
+            })
+            $('.editBtn').prop( "disabled", false );
+            $('.editWindow').empty()
         })
 
-        slider.dblclick(function() {
-            editor.editBlock(this, 'slider')
-        });
-
-        slider.hover(function(){
-            $(this).css({
-                'border' : 'solid 3px wheat',
-                'cursor' : 'pointer',
-                'opacity' : '0.3'
-            });
-            }, function(){
-            $(this).css({
-                'border' : 'solid 1px #f57507',
-                'cursor' : 'default',
-                'opacity' : '1'
-
-            });
-        })
-
-        $("#div_" + parentID).append(slider)
     },
 
     createText: (parentID) =>{
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
+
         textArea = $('<textarea placeholder="Расскажите о экскурсии" id="textArea_' + id + '"></textarea>')
 
         textArea.css({
@@ -189,7 +249,10 @@ const editor = {
 
         })
 
-        console.log("textArea_" + id)
+        textArea.dblclick(function(event) {
+            editor.editBlock(textArea, 'textArea')
+        });
+
         $("#div_" + parentID).append(textArea) 
     },
     readAsUrl: (files, callback) =>{
@@ -221,6 +284,7 @@ const generator = {
     count: 0,
     slides: [],
     textAreasCount : 0,
+    editWindowID: '', 
 
     create: () => {
 
@@ -243,18 +307,13 @@ const generator = {
             generator.createEditWindow(parseInt($(this).attr('data-slide')));
         });
 
-        // $(".input-file").on('change', function() {
-        //     var files = this.files;
-
-        //     for (var i = 0; i < files.length; i++) {
-        //         preview(files[i], $(this));
-        //     }
-        // });
     },
 
    createEditWindow: (slide_id) => {
 
-            divID = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5));
+            generator.editWindowID = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5));
+
+            editWindowID = generator.editWindowID
 
             for (var i = 0; i < generator.slides.length; i++) {
                 if (generator.slides[i].id == slide_id) {
@@ -269,13 +328,13 @@ const generator = {
             overlayOn();
             $('#overlay').empty()
 
-            div = $('<div id="div_'+divID+'">')
+            div = $('<div id="div_'+editWindowID+'">')
 
             editWindow = $('<div class="editWindow"></div>')
 
             addText = $('<input  class="editBtn"  type="button" value="Текст">')
 
-            addImage = $('<input class="editBtn"  type="button" value="Изображения">')
+            addBackground = $('<input class="editBtn"  type="button" value="Фон">')
 
             addAudio = $('<input class="editBtn"  type="button" value="Аудио">')
 
@@ -295,8 +354,11 @@ const generator = {
                 */
             })
 
-            addImage.click(function(event) {
-                editor.createSlider(divID)
+            addBackground.click(function(event) {
+                addBackground.attr('disabled', 'disabled');
+                editor.setBackground(editWindowID, undefined, ()=>{
+                    addBackground.removeAttr('disabled');
+                })
             })
 
             addText.click(function(event) {
@@ -305,7 +367,7 @@ const generator = {
                 }
                 else if(generator.textAreasCount < 1){
                     generator.textAreasCount += 1
-                    editor.createText(divID)
+                    editor.createText(editWindowID)
                 }
             })
 
@@ -336,7 +398,7 @@ const generator = {
                  'overflow': 'hidden'
              });
 
-             div.append(addText, addImage, addAudio, exitBtn)
+             div.append(addText, addBackground, addAudio, exitBtn)
 
              $("#overlay").append(div, editWindow)
     }
