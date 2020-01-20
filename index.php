@@ -22,12 +22,21 @@
 <body>
  <!--  <div class="img_logo"></div> -->
     <div class="nav">
+
         <a href="#">Личный кабинет</a>
         <a href="generator/index.php">Создать</a>
         <a href="filter/index.html">Каталог</a>
     </div>
 
     <!--Navigation-->
+
+        <a href="#">Главная</a>
+        <a href="#">Создать</a>
+        <a href="#">Каталог</a>
+    </div>
+
+    <!--Hero & Navigation-->
+
     <div id="hero">
     
     <section>
