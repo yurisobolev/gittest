@@ -275,15 +275,13 @@ const editor = {
     saveSlide(){
 
         object = {
-            name: '',
-            discription: '',
+            name: $('.mainOptions')[0].value,
+            discription: $('.mainOptions')[1].value,
             slides: generator.slides
         }
 
-        $('.mainOptions').value()
-
         var form_data = new FormData();
-        form_data.append('upload', JSON.stringify(generator.slides));
+        form_data.append('upload', JSON.stringify(object));
 
         $.ajax({
             url: 'save-gid.php', 

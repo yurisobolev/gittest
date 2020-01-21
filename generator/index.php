@@ -40,9 +40,9 @@
             <div class="editPlace">
                 <input class="mainOptions" style="margin: 10px;"  type="" value="" placeholder="Название экскурсии" name="">
                 <br>
-                <textarea  placeholder="Краткое описание" style=" margin : 10px;resize: none;"></textarea>
+                <textarea class="mainOptions" placeholder="Краткое описание" style=" margin : 10px;resize: none;"></textarea>
                 <br>
-                <input class="mainOptions" style="margin: 10px;" type="button" value="Сохранить" name="">
+                <input style="margin: 10px;" type="button" value="Сохранить" name="">
             </div>
     </div>
 
