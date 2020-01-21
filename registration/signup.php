@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 
-=======
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -129,7 +127,6 @@
 </body>
 
 </html>
->>>>>>> 0ebac0b532cec60553bb360e1664c16529ba38ac
 
 <?php 
   require 'db.php';

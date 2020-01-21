@@ -29,6 +29,7 @@ const editor = {
     },
     editTextArea:(el) =>{
 
+
         backgroundColorArea = $('<div class="optionsArea">')
 
         textColorArea = $('<div class="optionsArea">')
@@ -41,7 +42,7 @@ const editor = {
         backgroundColorArea.append($('<div class="background_picker">'))
         textColorArea.append($('<div class="text_picker">'))
 
-        $('.editWindow').append(backgroundColorArea, textColorArea, fontSizeArea)
+        $('.editWindow').append(backgroundColorArea, textColorArea)
 
         const background_picker = Pickr.create({
             el: '.background_picker',
@@ -211,11 +212,18 @@ const editor = {
         $('.editBtn').prop( "disabled", true );
 
         editor.takePhotos((_data)=>{
-            $("#div_" + parentID).css({
-                'background-image' : 'url("'+_data.images[0]+'")',
-                'background-repeat' : 'no-repeat',
-                'background-size'   : 'contain'
-            });
+            editor.slideOnEdit.backgroundUrl = _data.images[0]
+            img = $('<img src="'+_data.images[0]+'"/>')
+            img.css({
+                'position' : 'absolute',
+                'left'     : '0',
+                'width'    : '100%',
+                'height'   : '100%',
+                'z-index'  : '-1'
+            })
+
+            $('#div_' + parentID).append(img)
+
             $('#div_' + parentID).css({
             'opacity' : '1'
             })
@@ -229,6 +237,12 @@ const editor = {
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
 
         textArea = $('<textarea placeholder="Расскажите о экскурсии" id="textArea_' + id + '"></textarea>')
+
+        textAreaObject = {
+            value: '',
+            background: 'https://wallpaperaccess.com/full/1595911.jpg',
+            textColor : 'white'
+        }
 
         textArea.css({
             'position':'absolute',
@@ -253,8 +267,38 @@ const editor = {
             editor.editBlock(textArea, 'textArea')
         });
 
+
+        editor.slideOnEdit.textEl.push(textAreaObject)
+
         $("#div_" + parentID).append(textArea) 
     },
+    saveSlide(){
+
+        object = {
+            name: '',
+            discription: '',
+            slides: generator.slides
+        }
+
+        $('.mainOptions').value()
+
+        var form_data = new FormData();
+        form_data.append('upload', JSON.stringify(generator.slides));
+
+        $.ajax({
+            url: 'save-gid.php', 
+            dataType: 'text',  
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,                         
+            type: 'post',
+            success: function(php_script_response){
+                console.log(php_script_response); 
+            }
+        });
+    },
+
     readAsUrl: (files, callback) =>{
 
         if (files && files[0]) {
@@ -292,7 +336,7 @@ const generator = {
             id : generator.count,
             textEl : [],
             audioEl : [],
-            imageEl : []
+            backgroundUrl : 'https://wallpaperaccess.com/full/1595911.jpg'
         }
 
         blockTemplate.css('display', 'block');
@@ -340,11 +384,17 @@ const generator = {
 
             exitBtn = $('<input class="exitBtn"  type="button" value="X">')
 
+            saveBtn = $('<input class="saveBtn"  type="button" value="Сохранить">')
+
             exitBtn.click(function(event) {
                 $('#overlay').empty()
                 div.empty()
                 overlayOff();
             });
+
+            saveBtn.click(function (event) {
+                editor.saveSlide()
+            })
 
             addAudio.click(function(event) {
                 /*
@@ -398,7 +448,7 @@ const generator = {
                  'overflow': 'hidden'
              });
 
-             div.append(addText, addBackground, addAudio, exitBtn)
+             div.append(addText, addBackground, addAudio, exitBtn, saveBtn)
 
              $("#overlay").append(div, editWindow)
     }
