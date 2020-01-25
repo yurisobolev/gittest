@@ -37,13 +37,7 @@
             </div>
 
             <div class="slideList"></div>
-            <div class="editPlace">
-                <input class="mainOptions" style="margin: 10px;"  type="" value="" placeholder="Название экскурсии" name="">
-                <br>
-                <textarea class="mainOptions" placeholder="Краткое описание" style=" margin : 10px;resize: none;"></textarea>
-                <br>
-                <input style="margin: 10px;" type="button" value="Сохранить" name="">
-            </div>
+            <div class="editPlace"></div>
     </div>
 
     

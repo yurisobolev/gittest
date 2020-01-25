@@ -28,14 +28,11 @@
         <a href="filter/index.html">Каталог</a>
     </div>
 
-    <!--Navigation-->
+   
 
-        <a href="#">Главная</a>
-        <a href="#">Создать</a>
-        <a href="#">Каталог</a>
-    </div>
+       
 
-    <!--Hero & Navigation-->
+    <!-- Navigation-->
 
     <div id="hero">
     
@@ -44,7 +41,11 @@
             <div id="hero-copy" class="col-2 column">
                 <p class="intro-text">О проекте</p>
                 <h1 class="headline-text-light">Проект GIDIT платформа для создания экскурсий</h1>
-                <p class="description-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p>
+                <p class="description-text">Каждый кто хотя бы раз приезжал в Москву или слышал о ней знает о Красной площади, Парке Горького, Большом театре и тп. Если ты недавно приехал в Москву, то в большинсте случаев твои знания о городе ограничиваются выше перечисленным, но я думаю каждый хотел бы иметь возможность бесплатно узнать побольше о столице.
+                    <p class="description-text">Даже люди которые сами живут в Москве не всегда знают чем себя развлечь на выходных, а если уж проявляет любопытсво это занимает у него много времени. Если вы также сталкиваетесь с такой проблемой или просто имеете возможность поделиться своими знаниями о столице наш сайт может почомь вам.</p>
+                  </p>
+                <p class="description-text"> Данный сайт позволяет не только легко и быстро находить интересные места по Москве, но и самому создавать интерактивные онлайн "экскурсии". Под словом "экскурсии" подразумевается формат, в котором человек имеет возможность самому создать небольшое описания какой-либо достопримечательности или локации. Всё осуществляется при помощи интерфейса с различными функциями.
+                Заинтересованы?</p>
                 <button class="button-to_generator">Try now</button>
                 
             </div>
@@ -63,9 +64,11 @@
                 <img src="">
             </div>
             <div id="about-text" class="col-2 column">
-                <p class="intro-text">НАЗВАНИЕ</p>
-                <h2>ЙОУУУУ ТЕКСТ ТОП</h2>
-                <p class="description-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
+                <p class="intro-text">Помощь в использовании</p>
+                <h2>Как это работает?</h2>
+                <p class="description-text">На самом деле всё довольно просто, человек имеет возможность создавать слайды к которым можно прикреплять фото-видео файлы, давать описание и при желании добавлять музыкальное сопровождение. Стиль, фон, размер почерка фотографий и тд всё можно менять под себя, дайте свободу мыслям. Чем-то это может напоминать "PowerPoint" и подобные приложения.
+                Если всё таки возникнут трудности вы можете воспользоваться видеоуроком.</p>
+                <a href="#">Как работать на GIDIT</a>
                
             </div>
         </div>
@@ -88,20 +91,15 @@
     <!--CTA Section -->
     <section id="cta-section" >
         <div  class="row container cta">
-            <h2>ЙОУ ТЕКСТ ЙОУУУУУУУУУ ( скачать приложение )</h2>
+            <h2>Также вы можете воспользоваться нашим мобильным приложением.<Sh2>
             <div class="cta-buttons">
                 <button class="button-light">about app</button>
                 <button class="button-dark">Download Now</button>
             </div>
         </div>
     </section>
-    <!--Pricing & Plans -->
-    <section id="pricing">
-        <div class ="row container"> 
-            <p class="intro-text">НАЗВАНИЕ</p>
-            <h2>Pricing & Plans</h2>
-        
-    </section>
+    
+   
 <!-- Contact Us -->
  
       
@@ -128,7 +126,7 @@
 $(function(){
 $(window).scroll(function() {
 var top = $(document).scrollTop();
-if (top < 100) $(".nav").css({top: '0', position: 'relative'});
+if (top < 100) $(".nav").css({top: '0', position: 'relative',background-color:black});
 else $(".nav").css({top: '0', position: 'fixed'});
 });
 });
