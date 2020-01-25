@@ -1,7 +1,5 @@
 jQuery(document).ready(($) => {
 
-    var queue = {};
-
     $("#add-block").click(function(event) {
         generator.create ();
     });
@@ -203,13 +201,28 @@ const editor = {
         $('.editWindow').append(div)
     },
 
-    setBackground: (parentID, images, callback) =>{
+    setBackground: (parentID, images) =>{
 
-        $('#div_' + parentID).css({
-            'opacity' : '0.5'
-        })
-        $('.editBtn').prop( "disabled", true );
+        if (images === undefined) {
+            $('#div_' + parentID).css({
+                'opacity' : '0.5'
+            })
+            $('.editBtn').prop( "disabled", true );
 
+            editor.takePhotos((_data)=>{
+                editor.slideOnEdit.backgroundUrl = _data.images[0]
+                img = $('<img src="'+_data.images[0]+'"/>')
+                img.css({
+                    'position' : 'absolute',
+                    'left'     : '0',
+                    'width'    : '100%',
+                    'height'   : '100%',
+                    'z-index'  : '-1'
+                })
+
+                $('#div_' + parentID).append(img)
+
+<<<<<<< HEAD
         editor.takePhotos((_data)=>{
             $("#div_" + parentID).css({
                 'background-image' : 'url("'+_data.images[0]+'")',
@@ -222,14 +235,46 @@ const editor = {
             $('.editBtn').prop( "disabled", false );
             $('.editWindow').empty()
         })
+=======
+                $('#div_' + parentID).css({
+                'opacity' : '1'
+                })
+                $('.editBtn').prop( "disabled", false );
+                $('.editWindow').empty()
+            })
+        }
+        else{
+            url = images[0]
+            editor.slideOnEdit.backgroundUrl = images[0]
+            img = $('<img src="'+images[0]+'"/>')
+            img.css({
+                'position' : 'absolute',
+                'left'     : '0',
+                'width'    : '100%',
+                'height'   : '100%',
+                'z-index'  : '-1'
+            })
+            $('#div_' + parentID).append(img)
+        }
+>>>>>>> 955529836a23f8a65eeb9ab18bc036d269b14eb2
 
     },
 
-    createText: (parentID) =>{
+    createText: (parentID, value, background, textColor) =>{
+
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
 
-        textArea = $('<textarea placeholder="Расскажите о экскурсии" id="textArea_' + id + '"></textarea>')
+<<<<<<< HEAD
+=======
+        textAreaObject = {
+            value: value,
+            background: background,
+            textColor : textColor
+        }
 
+        textArea = $('<textarea placeholder="Расскажите о экскурсии" id="textArea_' + id + '">'+value+'</textarea>')
+
+>>>>>>> 955529836a23f8a65eeb9ab18bc036d269b14eb2
         textArea.css({
             'position':'absolute',
             'display' : 'block',
@@ -245,7 +290,8 @@ const editor = {
             'outline' : 'none',
             'width' : '750px',
             'height' : '250px',
-            'bottom' : '0'
+            'bottom' : '0',
+            'color'  : textColor
 
         })
 
@@ -253,8 +299,64 @@ const editor = {
             editor.editBlock(textArea, 'textArea')
         });
 
+<<<<<<< HEAD
         $("#div_" + parentID).append(textArea) 
     },
+=======
+        if (editor.slideOnEdit.textEl.length > 0) {
+            console.log('Текст уже есть')
+            $("#div_" + parentID).append(textArea) 
+        }
+        else if(editor.slideOnEdit.textEl.length < 1){
+            $("#div_" + parentID).append(textArea) 
+            editor.slideOnEdit.textEl.push(textAreaObject)
+        }
+
+        $("#div_" + parentID).append(textArea) 
+    },
+    saveSlide(){
+
+        index = editor.getSlideIndex(editor.slideOnEdit.id)
+
+        editor.slideOnEdit.textEl[0].value = $('textarea')[0].value
+    
+    },
+    loadSlide(slide_id){
+
+        this.setBackground(generator.editWindowID, [editor.slideOnEdit.backgroundUrl])
+
+        textElements = editor.slideOnEdit.textEl
+
+        if (textElements.length > 0) {
+
+            value = textElements[0].value
+
+            background = textElements[0].background
+
+            textColor = textElements[0].textColor
+
+            this.createText(generator.editWindowID, value, background, textColor)
+        }
+
+        console.log('Слайд '+editor.slideOnEdit.id+' загружен')
+    },
+
+    getSlideIndex(slide_id){
+
+        for (var i = 0; i <= generator.slides.length; i++) {
+            if (generator.slides[i].id === slide_id){
+                return i
+                break
+            }
+            else{
+                continue
+                console.log('Такого слайда не найдено')
+            }
+        }
+        return false
+    },
+
+>>>>>>> 955529836a23f8a65eeb9ab18bc036d269b14eb2
     readAsUrl: (files, callback) =>{
 
         if (files && files[0]) {
@@ -283,7 +385,6 @@ const generator = {
 
     count: 0,
     slides: [],
-    textAreasCount : 0,
     editWindowID: '', 
 
     create: () => {
@@ -311,19 +412,12 @@ const generator = {
 
    createEditWindow: (slide_id) => {
 
+
             generator.editWindowID = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5));
 
             editWindowID = generator.editWindowID
 
-            for (var i = 0; i < generator.slides.length; i++) {
-                if (generator.slides[i].id == slide_id) {
-                    editor.slideOnEdit = generator.slides[i]
-                    break;
-                }
-                else{
-                    console.log('Такого слайда не найдено!')
-                }
-            }
+            editor.slideOnEdit = generator.slides[editor.getSlideIndex(slide_id)]
 
             overlayOn();
             $('#overlay').empty()
@@ -356,18 +450,15 @@ const generator = {
 
             addBackground.click(function(event) {
                 addBackground.attr('disabled', 'disabled');
-                editor.setBackground(editWindowID, undefined, ()=>{
-                    addBackground.removeAttr('disabled');
-                })
+                editor.setBackground(editWindowID)
             })
 
             addText.click(function(event) {
-                if (generator.textAreasCount > 0) {
+                if (editor.slideOnEdit.textEl.length > 0) {
                     alert('Превышен лимит текстовых блоков')
                 }
-                else if(generator.textAreasCount < 1){
-                    generator.textAreasCount += 1
-                    editor.createText(editWindowID)
+                else if(editor.slideOnEdit.textEl.length < 1){
+                    editor.createText(editWindowID, '', 'icons/default_background.jpg', 'white')
                 }
             })
 
@@ -400,7 +491,37 @@ const generator = {
 
              div.append(addText, addBackground, addAudio, exitBtn)
 
-             $("#overlay").append(div, editWindow)
+             div.ready(function() {
+                 $("#overlay").append(div, editWindow)
+                 editor.loadSlide(slide_id)
+                 $('.loader-overlay').css('display', 'none'); 
+             });
+             $('.loader-overlay').css('display', 'block');
+    },
+
+    saveGid: () => {
+
+        object = {
+            name: $('.mainOptions')[0].value,
+            discription: $('.mainOptions')[1].value,
+            slides: generator.slides
+        }
+
+        var form_data = new FormData();
+        form_data.append('upload', JSON.stringify(object));
+
+        $.ajax({
+            url: 'save-gid.php', 
+            dataType: 'text',  
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,                         
+            type: 'post',
+            success: function(php_script_response){
+                console.log(php_script_response); 
+            }
+        });
     }
 
     }

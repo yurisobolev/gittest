@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.theme.default.min.css">
 
     <link rel="stylesheet" type="text/css" href="../css/generator.css">
+    <link rel="stylesheet" type="text/css" href="../css/loader.css">
     <link rel="stylesheet" type="text/css" href="../css/socialbtns.css">
 
     <title>Генератор v1.0</title>
@@ -28,6 +29,15 @@
 </head>
 
 <body>
+
+<div class="loader-overlay">
+    <div class="loading-container">
+        <div class="loading"></div>
+        <div id="loading-text">loading</div>
+    </div>
+</div>
+
+
     <div id="overlay"></div>
 
     <div class="generator">
