@@ -1,4 +1,18 @@
-<!DOCTYPE>
+    <?php 
+            require '../registration/db.php';
+            R::setup(  'mysql:host=127.0.0.1;dbname=akowidget','root', '');
+            if ( !R::testConnection() )
+            {
+                exit('Нет подключения к базе данных');
+            }
+    ?>
+    
+
+
+    <?php if ( isset ($_SESSION['logged_user']) ) : ?>
+
+        <a href="/registration/logout.php">Выйти</a>
+
 <!DOCTYPE html>
 <html>
 
@@ -91,3 +105,9 @@
                                 </li>
                             </ul>
                         </div> -->
+
+<?php else : ?>
+    Вы не авторизованы<br/>
+    <a href="/registration/login.php">Авторизация</a>
+    <a href="/registration/signup.php">Регистрация</a>
+<?php endif; ?>
