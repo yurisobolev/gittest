@@ -51,3 +51,6 @@ $format = str_replace('jpeg', 'jpg', $extension);
 if (!move_uploaded_file($filePath, __DIR__ . '/pics/' . $name . $format)) {
     die('При записи изображения на диск произошла ошибка.');
 }
+
+echo '{ "url": "pics/'. $name . $format .'" }';
+

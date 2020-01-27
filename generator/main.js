@@ -1,12 +1,16 @@
-jQuery(document).ready(($) => {
+    $('.loader-overlay').show()
 
-    $("#add-block").click(function(event) {
-        generator.create ();
-    });
+    jQuery(document).ready(($) => {
 
-    blockTemplate = $(document).find('.templateGid').clone()
+        $("#add-block").click(function(event) {
+            generator.create ();
+        });
 
-})
+        blockTemplate = $(document).find('.templateGid').clone()
+
+        $('.loader-overlay').hide()
+
+    })
 
 var blockTemplate;
 
@@ -113,8 +117,6 @@ const editor = {
 
         imagesBlock = $('<div id="imagesBlock"></div>')
 
-        saveBtn = $('<input class="editBtn" style="position: absolute; display: block; outline: none;" type="button" value="Применить" />')
-
         imagesBlock.css({
             'position': 'relative',
             'width'   : '250px',
@@ -142,11 +144,10 @@ const editor = {
             'margin': '10px'
         });
 
-        loadBtn.click(function(event) {
+        loadForm.on('change', function(event) {
             var file_data = $('#loadForm')[0].elements[0].files[0];   
             var form_data = new FormData();                  
-            form_data.append('upload', file_data);
-            console.log(form_data, file_data)                           
+            form_data.append('upload', file_data);                           
                 $.ajax({
                     url: 'file-handler.php', 
                     dataType: 'text',  
@@ -156,7 +157,34 @@ const editor = {
                     data: form_data,                         
                     type: 'post',
                     success: function(php_script_response){
-                        console.log(php_script_response); 
+
+                            if (php_script_response === "Размер изображения не должен превышать 5 Мбайт.") {
+                                alert(php_script_response)
+                            }
+                            else if(php_script_response === "Высота изображения не должна превышать 768 точек."){
+                                alert(php_script_response)
+                            }
+                            else if(php_script_response === "Ширина изображения не должна превышать 1280 точек."){
+                                alert(php_script_response)
+                            }
+                            else if ( JSON.parse(php_script_response).url != undefined) {
+
+                              url = JSON.parse(php_script_response).url
+                              preview = $('<img src="'+url+'" />')
+                              preview.css({
+                                  'position': 'relative',
+                                  'float'   : 'left',
+                                  'width'   : '120px',
+                                  'height'  : '100px',
+                                  'margin'  : '10px',
+                                  'padding' : '2px',
+                                  'border'  : '1px solid white'
+                              });
+
+                              callback(url)
+                              preview.appendTo(imagesBlock)
+
+                            }
                     }
                 });
         });
@@ -166,38 +194,9 @@ const editor = {
             'margin-left' : '10px'
         }); 
 
-        loadForm.on('change', function(event) {
-
-           editor.readAsUrl($(this)[0].elements[0].files, (src)=>{
-
-              preview = $('<img src="'+src+'" />')
-
-              _data.images.push(src)
-              console.log(_data)
-
-              preview.css({
-                  'position': 'relative',
-                  'float'   : 'left',
-                  'width'   : '120px',
-                  'height'  : '100px',
-                  'margin'  : '10px',
-                  'padding' : '2px',
-                  'border'  : '1px solid white'
-              });
-
-              preview.appendTo(imagesBlock)
-
-           })
-        });
-
-        saveBtn.click(function(event) {
-            callback(_data)
-        });
-
-
         loadBtn.appendTo(loadForm)
 
-        div.append(loadForm, imagesBlock, saveBtn)
+        div.append(loadForm, imagesBlock)
 
         $('.editWindow').append(div)
     },
@@ -210,9 +209,10 @@ const editor = {
             })
             $('.editBtn').prop( "disabled", true );
 
-            editor.takePhotos((_data)=>{
-                editor.slideOnEdit.backgroundUrl = _data.images[0]
-                img = $('<img src="'+_data.images[0]+'"/>')
+            editor.takePhotos((response)=>{
+
+                editor.slideOnEdit.backgroundUrl = response
+                img = $('<img src="'+response+'"/>')
                 img.css({
                     'position' : 'absolute',
                     'left'     : '0',
@@ -485,14 +485,19 @@ const generator = {
 
     saveGid: () => {
 
-        object = {
+        main = {
             name: $('.mainOptions')[0].value,
             discription: $('.mainOptions')[1].value,
-            slides: generator.slides
+        }
+
+        data = {
+            slides: generator.slides,
+            tags: ''
         }
 
         var form_data = new FormData();
-        form_data.append('upload', JSON.stringify(object));
+        form_data.append('main', JSON.stringify(main));
+        form_data.append('data', JSON.stringify(data))
 
         $.ajax({
             url: 'save-gid.php', 
@@ -503,7 +508,22 @@ const generator = {
             data: form_data,                         
             type: 'post',
             success: function(php_script_response){
-                console.log(php_script_response); 
+                    console.log(php_script_response)
+                    if (php_script_response === "code: 0") {
+                        alert('Экскурсия не была загружена! \n Вы не назвали экскурсиию')
+                    }
+                    else if(php_script_response === "code: 1"){
+                        alert('Экскурсия не была загружена! \n Вы не написали описание')
+                    }
+                    else if(php_script_response === "code: 2"){
+                        alert('Экскурсия не была загружена! \n Название содержит более 30 знаков')
+                    }
+                    else if(php_script_response === "code: 3"){
+                        alert('Экскурсия не была загружена! \n Описание содержит более 120 знаков')
+                    }
+                    else if (php_script_response === "code: 4") {
+                        alert('Экскурсия успешно сохранена и загружена')
+                    }
             }
         });
     }
