@@ -23,7 +23,7 @@
  <!--  <div class="img_logo"></div> -->
     <div class="nav">
 
-        <a href="#">Личный кабинет</a>
+        <a href="profile/index.html">Личный кабинет</a>
         <a href="generator/index.php">Создать</a>
         <a href="filter/index.html">Каталог</a>
     </div>
@@ -74,7 +74,7 @@
         </div>
     </section>
     <!--About 2 Section-->
-    <section id="about2">
+   <!-- <section id="about2">
         <div  class="row container">
             <div id="about2-text" class="col-2 column">
                 <p class="intro-text">НАЗВАНИЕ</p>
@@ -85,10 +85,8 @@
                 <img src="">
             </div>
         </div>
-    </section>
-    <!-- Testimonials -->
-    
-    <!--CTA Section -->
+    </section> -->
+   
     <section id="cta-section" >
         <div  class="row container cta">
             <h2>Также вы можете воспользоваться нашим мобильным приложением.<Sh2>

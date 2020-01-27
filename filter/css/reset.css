@@ -1,47 +1,37 @@
 
-body {
-	background: linear-gradient(-60deg, #6a6a6a,
-	#545454,#3f3f3f,#2c2c2c,#D79D41,#191919,#000000);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 20s ease infinite;
-	-moz-animation: Gradient 20s ease infinite;
-	animation: Gradient 20s ease infinite;
+.nav {
+  background-color: transparent;
+margin-right:  10%;
+margin-left: 12%;
+  padding-right:50%;
+  height: 120px;
+  color: black;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-image: transparent;
+}
+
+.nav a {
+  float:right;
+   text-decoration: none;
+  padding:15px;
+  display: block;
+  color: #fff;
+  font-size: 26px;
 
 }
-@-webkit-keyframes Gradient {
-	0% {
-	background-position: 0% 50%
-	}
-	50% {
-	background-position: 100% 50%
-	}
-	100% {
-	background-position: 0% 50%
-	}
+.nav a:hover {
+  color: #000;
+  background: #808080;
 }
- 
-@-moz-keyframes Gradient {
-	0% {
-	background-position: 0% 50%
-	}
-	50% {
-	background-position: 100% 50%
-	}
-	100% {
-	background-position: 0% 50%
-	}
+
+body {
+	background-color: #090a0f;
 }
- 
-@keyframes Gradient {
-	0% {
-	background-position: 0% 50%
-	}
-	50% {
-	background-position: 100% 50%
-	}
-	100% {
-	background-position: 0% 50%
-	}
+
+.filter {
+	color: white;
 }
 #footer{
  margin-top:-10px; 
