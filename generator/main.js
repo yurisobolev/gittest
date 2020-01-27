@@ -31,7 +31,6 @@ const editor = {
     },
     editTextArea:(el) =>{
 
-
         backgroundColorArea = $('<div class="optionsArea">')
 
         textColorArea = $('<div class="optionsArea">')
@@ -44,7 +43,7 @@ const editor = {
         backgroundColorArea.append($('<div class="background_picker">'))
         textColorArea.append($('<div class="text_picker">'))
 
-        $('.editWindow').append(backgroundColorArea, textColorArea)
+        $('.editWindow').append(backgroundColorArea, textColorArea, fontSizeArea)
 
         const background_picker = Pickr.create({
             el: '.background_picker',
@@ -223,6 +222,20 @@ const editor = {
 
                 $('#div_' + parentID).append(img)
 
+<<<<<<< HEAD
+        editor.takePhotos((_data)=>{
+            $("#div_" + parentID).css({
+                'background-image' : 'url("'+_data.images[0]+'")',
+                'background-repeat' : 'no-repeat',
+                'background-size'   : 'contain'
+            });
+            $('#div_' + parentID).css({
+            'opacity' : '1'
+            })
+            $('.editBtn').prop( "disabled", false );
+            $('.editWindow').empty()
+        })
+=======
                 $('#div_' + parentID).css({
                 'opacity' : '1'
                 })
@@ -243,6 +256,7 @@ const editor = {
             })
             $('#div_' + parentID).append(img)
         }
+>>>>>>> 955529836a23f8a65eeb9ab18bc036d269b14eb2
 
     },
 
@@ -250,6 +264,8 @@ const editor = {
 
         id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
 
+<<<<<<< HEAD
+=======
         textAreaObject = {
             value: value,
             background: background,
@@ -258,6 +274,7 @@ const editor = {
 
         textArea = $('<textarea placeholder="Расскажите о экскурсии" id="textArea_' + id + '">'+value+'</textarea>')
 
+>>>>>>> 955529836a23f8a65eeb9ab18bc036d269b14eb2
         textArea.css({
             'position':'absolute',
             'display' : 'block',
@@ -282,6 +299,10 @@ const editor = {
             editor.editBlock(textArea, 'textArea')
         });
 
+<<<<<<< HEAD
+        $("#div_" + parentID).append(textArea) 
+    },
+=======
         if (editor.slideOnEdit.textEl.length > 0) {
             console.log('Текст уже есть')
             $("#div_" + parentID).append(textArea) 
@@ -335,6 +356,7 @@ const editor = {
         return false
     },
 
+>>>>>>> 955529836a23f8a65eeb9ab18bc036d269b14eb2
     readAsUrl: (files, callback) =>{
 
         if (files && files[0]) {
@@ -371,7 +393,7 @@ const generator = {
             id : generator.count,
             textEl : [],
             audioEl : [],
-            backgroundUrl : 'https://wallpaperaccess.com/full/1595911.jpg'
+            imageEl : []
         }
 
         blockTemplate.css('display', 'block');
@@ -412,17 +434,11 @@ const generator = {
 
             exitBtn = $('<input class="exitBtn"  type="button" value="X">')
 
-            saveBtn = $('<input class="saveBtn"  type="button" value="Сохранить">')
-
             exitBtn.click(function(event) {
                 $('#overlay').empty()
                 div.empty()
                 overlayOff();
             });
-
-            saveBtn.click(function (event) {
-                editor.saveSlide()
-            })
 
             addAudio.click(function(event) {
                 /*
@@ -473,7 +489,7 @@ const generator = {
                  'overflow': 'hidden'
              });
 
-             div.append(addText, addBackground, addAudio, exitBtn, saveBtn)
+             div.append(addText, addBackground, addAudio, exitBtn)
 
              div.ready(function() {
                  $("#overlay").append(div, editWindow)

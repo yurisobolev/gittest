@@ -2,28 +2,26 @@
     box-sizing: border-box;
 }
 
+section{
+  left: 0;
+}
 body {
     font-family: sans-serif;
     background: black;
 }
-
-
-section{
-  left: 0;
-}
-
 .container {
+  background-color: transparent;
     max-width: 1000px;
     margin: 0 auto;
 }
-.nav {
 
+.nav {
+  background-color: transparent;
 margin-right:  10%;
 margin-left: 12%;
-
   padding-right:50%;
   height: 120px;
-  color: white;
+  color: black;
   width: 100%;
   position: fixed;
   top: 0;
@@ -36,7 +34,6 @@ margin-left: 12%;
   display: block;
   color: #fff;
   font-size: 26px;
-
 
 }
 .nav a:hover {
@@ -62,7 +59,7 @@ margin-left: 12%;
 .button-to_generator:hover {
   background-color: #808080;
   color: black;
-<<<<<<< HEAD
+
 }
 .img_logo{
   margin-left: 15%;
@@ -75,7 +72,7 @@ margin-left: 12%;
 img {
     width: 100%;
 }
-=======
+
 }
 .img_logo{
   margin-left: 15%;
@@ -88,7 +85,6 @@ img {
 img {
     width: 100%;
 }
->>>>>>> 170c505583a4fde0c17f9894a1871e0094d74afb
 
 /* Navigation Styling */
 
@@ -107,8 +103,6 @@ img {
     margin: 15px auto;
 }
 
-
-
 .navbar-toggle {
     position: absolute;
     top: 10px;
@@ -117,9 +111,7 @@ img {
     color: #fff;
     font-size: 24px;
 }
-
 /* Hides Menu by Default */
-
 .main-nav {
     list-style-type: none;
     display: none;
@@ -211,7 +203,7 @@ img {
 }
 
 .description-text {
-    color: #909091;
+    color: #DCDCDC;
 }
 
 /* Buttons */
@@ -263,7 +255,171 @@ img {
     background: url("https://ivankondratyev.ru/images/red.jpg") no-repeat;
     background-size: cover;
     height: 1200px;
-<<<<<<< HEAD
+
+}
+
+@media screen and (min-width:768px) {
+#hero-phone img {
+    width: 400px;
+}
+}
+
+#hero-phone {
+    text-align: center;
+}
+
+#hero-copy {
+    margin-top: 50px;
+}
+
+/* Features Section */
+
+#features {
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.feature-icon {
+    border: 1px solid #787878;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    
+}
+
+.feature-icon i {
+    font-size: 50px;
+    padding-top: 25px;
+    color: #008ed6;
+}
+
+#features p {
+    padding: 0 20px;
+}
+
+/* About Section */
+
+#about {
+  background-color:#696969;
+  color: white;
+    border-top: solid 2px #f4f4f4;
+    padding: 30px 0;
+}
+
+@media screen and (min-width:768px) {
+#about-phone img {
+    width: 400px;
+}
+}
+
+#about-text li {
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 2;
+}
+
+#about-text i {
+    color:white;
+}
+
+#about2 {
+    background-color: grey;
+    padding: 30px 0px;
+}
+
+#about2-text {
+    margin-top: 20px;
+    color: white;
+}
+
+/* Testimonials Section */
+
+#testimonials {
+    background: url("") no-repeat;
+    background-size: cover;
+    padding: 30px 0px;
+}
+
+#testimonials-heading {
+    text-align: center;
+}
+
+
+#testimonials {
+    color: #fff;
+}
+
+.testimonial-text {
+    padding: 10px;
+    font-style: italic;
+}
+
+.client {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.client img{
+    width: 60px;
+    padding: 10px
+}
+
+.client span {
+    display: block;
+    padding: 5px
+}
+
+
+/* CTA Section */
+
+#cta-section {
+    background-color: black;
+    color: #fff;
+    padding: 30px;
+}
+
+@media screen and (min-width:768px){
+
+.cta {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.cta-buttons {
+    margin-left: 100px;
+}
+    
+}
+
+.cta-buttons {
+    margin: 0 auto;
+}
+
+
+/* Pricing Table */
+
+#pricing {
+    text-align: center;
+  height: 300px;
+}
+
+.price-table {
+    list-style: none;
+    border: 1px solid #999999;
+    text-align: center;
+    padding: 0px;
+}
+
+.price-table li {
+    list-style: none;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+
 }
 
 @media screen and (min-width:768px) {
@@ -332,7 +488,7 @@ img {
 }
 
 #about2 {
-    background-color: #111033;
+    background-color: #808080;
     padding: 30px 0px;
 }
 
@@ -383,7 +539,7 @@ img {
 /* CTA Section */
 
 #cta-section {
-    background-color: #000;
+    background-color:black;
     color: #fff;
     padding: 30px;
 }
@@ -409,280 +565,26 @@ img {
 
 /* Pricing Table */
 
-#pricing {
-    text-align: center;
-  height: 800px;
-}
 
-.price-table {
-    list-style: none;
-    border: 1px solid #999999;
-    text-align: center;
-    padding: 0px;
-}
-
-.price-table li {
-    list-style: none;
-    border: 1px solid #e0e0e0;
-    text-align: center;
-}
-
-=======
-}
-
-@media screen and (min-width:768px) {
-#hero-phone img {
-    width: 400px;
-}
-}
-
-#hero-phone {
-    text-align: center;
-}
-
-#hero-copy {
-    margin-top: 50px;
-}
-
-/* Features Section */
-
-#features {
-    text-align: center;
-    padding: 30px 0px;
-}
-
-.feature-icon {
-    border: 1px solid #787878;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-    
-}
-
-.feature-icon i {
-    font-size: 50px;
-    padding-top: 25px;
-    color: #008ed6;
-}
-
-#features p {
-    padding: 0 20px;
-}
-
-/* About Section */
-
-#about {
-  color: white;
-    border-top: solid 2px #f4f4f4;
-    padding: 30px 0;
-}
-
-@media screen and (min-width:768px) {
-#about-phone img {
-    width: 400px;
-}
-}
-
-#about-text li {
-    list-style-type: none;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 2;
-}
-
-#about-text i {
-    color:white;
-}
-
-#about2 {
-    background-color: #111033;
-    padding: 30px 0px;
-}
-
-#about2-text {
-    margin-top: 20px;
-    color: white;
-}
-
-/* Testimonials Section */
-
-#testimonials {
-    background: url("") no-repeat;
-    background-size: cover;
-    padding: 30px 0px;
-}
-
-#testimonials-heading {
-    text-align: center;
-}
-
-
-#testimonials {
-    color: #fff;
-}
-
-.testimonial-text {
-    padding: 10px;
-    font-style: italic;
-}
-
-.client {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-}
-
-.client img{
-    width: 60px;
-    padding: 10px
-}
-
-.client span {
-    display: block;
-    padding: 5px
-}
-
-
-/* CTA Section */
-
-#cta-section {
-    background-color: #000;
-    color: #fff;
-    padding: 30px;
-}
-
-@media screen and (min-width:768px){
-
-.cta {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-}
-
-.cta-buttons {
-    margin-left: 100px;
-}
-    
-}
-
-.cta-buttons {
-    margin: 0 auto;
-}
-
-
-/* Pricing Table */
-
-#pricing {
-    text-align: center;
-  height: 800px;
-}
-
-.price-table {
-    list-style: none;
-    border: 1px solid #999999;
-    text-align: center;
-    padding: 0px;
-}
-
-.price-table li {
-    list-style: none;
-    border: 1px solid #e0e0e0;
-    text-align: center;
-}
-
->>>>>>> 170c505583a4fde0c17f9894a1871e0094d74afb
-.price-header {
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 10px;
-    
-}
-
-.price-cell {
-    padding: 30px;
-}
-
-.price-cell-special {
-    padding: 30px;
-    background-color: #008ed6;
-    color: #fff;
-}
-
-.price {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.per-month {
-    color: #999999;
-}
-
-.per-month-special {
-    color: #fff;
-}
-
-.price-text {
-    color: #999999;
-    padding: 30px;
-}
-
-.price-cta {
-    padding: 10px;
-}
-
-.price-button {
-  background-color: transparent;
-  border: solid 1px #999999;
-  color: #008ed6;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 2px;
-  cursor: pointer;
-  text-transform: uppercase; 
-}
-
-.price-button-special {
-  background-color: #008ed6;
-  border: solid 1px #999999;
-  color: #fff;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 2px;
-  cursor: pointer;
-  text-transform: uppercase; 
-}
-
-
-/* Contact Section */
 
 #contact {
     text-align: center;
-    background-color: #e0e0e0;
+    background-color: black;
     padding-top: 30px;
-<<<<<<< HEAD
+
 }
 
 #contact i {
     color: #008ed6;
 }
 
-=======
-}
+
 
 #contact i {
     color: #008ed6;
 }
 
->>>>>>> 170c505583a4fde0c17f9894a1871e0094d74afb
+
 .contact-info {
     color: #999999;
     font-size: 10px;
@@ -693,7 +595,7 @@ img {
 form {
     width: 70%;
     margin: 0 auto;
-    background-color: black;
+    background-color: white;
     padding: 30px;
 }
 
@@ -705,7 +607,7 @@ form {
 .form-left input {
     margin: 10px;
     padding: 10px;
-    background-color: #000;
+    background-color: white;
     color: #999;
 }
 
@@ -724,7 +626,7 @@ form {
 }
 
 .form-right textarea {
-    background-color: #000;
+    background-color: white;
     color: #999;
     height: 200px;
     
@@ -734,7 +636,7 @@ form {
 /* Footer Styling */
 
 #footer-info {
-    background-color: #000;
+    background-color:white;
     color: #999;
     padding: 20px;
 }
